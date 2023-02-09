@@ -85,7 +85,6 @@ html
         img
           width: 100%
 
-
 .categories
   background-color: #F5F5F5
   padding: 40px 0
@@ -98,7 +97,7 @@ html
     height: 3px
     background-color: black
     border-radius: 10px
-    margin-bottom: 30px 
+    margin-bottom: 30px
   .wrap
     max-width: 1700px
     margin: auto
@@ -108,9 +107,15 @@ html
       align-items: center
       height: calc((1260px)*.22/(8/13))
       .card
-        background-color: #92000A
+        display: flex
+        justify-content: center
+        align-items: center
         aspect-ratio: 8/13
         width: 20%
         transition: .3s
+        background-image: linear-gradient(180deg, rgba(1,84,0,0.4) 0%, rgba(1,84,0,1) 100%),url("../img/home/categories/classical.jpeg")
+        background-size: 110%
+        background-position: center
         &:hover
           width: 22%
+          background-size: 100%
