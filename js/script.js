@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   {
     let home = document.querySelector(".home");
-    let slide = home.querySelector(".slide");
+    let container = home.querySelector(".container");
     let buttons = home.querySelectorAll("button");
 
     let buildSlide = function (curSlide) {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
       pic.querySelector(".next-pic").src = homeSlides[curSlide].image;
       pic.querySelector(".next-pic").classList.add("appear-pic");
       setTimeout(() => {
-        slide.style.backgroundColor = homeSlides[curSlide].mainColor;
+        home.style.backgroundColor = homeSlides[curSlide].mainColor;
         home.querySelector(".next").classList.remove("appear");
         pic.querySelector(".curent").src = homeSlides[curSlide].image;
         pic.querySelector(".next-pic").classList.remove("appear-pic");
@@ -69,14 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(() => {
       curSlide = (curSlide + 1) % 3;
       buildSlide(curSlide);
-    }, 10000);
+    }, 10000000000000);
   }
   {
     const categories = document.querySelector(".categories")
     const cards = categories.querySelectorAll("card")
     cards.forEach((el, it) => {
-      §§
-    })
+    });
   }
 });
 

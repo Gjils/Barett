@@ -6,10 +6,13 @@
 
 html
   overflow-x: hidden
+.container
+  width: 1260px
 .home
   margin: 0 auto
   width: 100vw
   height: 600px
+  background-color: #734222
   .next
     width: 100%
     height: 600px
@@ -18,14 +21,14 @@ html
   .appear
     transition: 1s
     left: 0
-  .slide
+  .container
     left: 0 !important
     height: 100%
-    padding: 50px 60px 40px 60px
+    margin: 0 auto
+    padding: 30px 0px 40px 0px
     width: 100%
-    background-color: #734222
     .mini-menu
-      margin-bottom: 80px
+      margin-bottom: 60px
       height: 40px
       display: flex
       justify-content: flex-end
@@ -38,18 +41,19 @@ html
         position: relative
         top: 4px
     .wrap
+      height: 350px
       display: flex
       justify-content: space-between
       .info
         width: 50%
-        height: 350px
+        height: 320px
         display: flex
         flex-direction: column
         justify-content: space-between
         position: relative
         z-index: 100
         h1
-          margin-top: 20px
+          margin-top: 0
           text-align: left
           font-size: 35pt
         .options
@@ -64,12 +68,12 @@ html
             font-weight: 500
             transition: .2s
       .picture
-        margin-right: 100px
-        width: 30%
+        width: 35%
+        display: flex
         position: relative
-        top: 40px
         overflow: hidden
         padding: 0px
+        align-items: center
         .next-pic
           position: absolute
           left: 0
@@ -81,14 +85,13 @@ html
         img
           width: 100%
 
-.categories
-  width: 100vw
-  background-color: #F5F5F5
-  padding: 40px 80px
 
+.categories
+  background-color: #F5F5F5
+  padding: 40px 0
   h2
     margin-top: 0
-    margin-bottom: 50px
+    margin-bottom: 20px
   .line
     margin: auto
     width: 100%
@@ -100,10 +103,10 @@ html
     max-width: 1700px
     margin: auto
     .cards
-      height: calc((100vw - 160px)*.22/(8/13))
       display: flex
       justify-content: space-between
       align-items: center
+      height: calc((1260px)*.22/(8/13))
       .card
         background-color: #92000A
         aspect-ratio: 8/13
