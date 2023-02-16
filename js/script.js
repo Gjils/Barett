@@ -138,10 +138,27 @@ document.addEventListener("DOMContentLoaded", () => {
         const card = document.createElement("a");
         card.classList.add("card");
 
+        const hovBg = document.createElement("div");
+        hovBg.classList.add("hover-bg");
+        card.appendChild(hovBg);
+
         const picture = document.createElement("div");
         picture.classList.add("picture");
         picture.style.backgroundImage = `url("${res["acoustic"][i]["images"][0]}")`;
         card.appendChild(picture);
+
+        const heart = document.createElement("i");
+        heart.classList.add("fa-heart");
+        heart.classList.add("fa-regular");
+        heart.addEventListener("mouseover", (e) => {
+          heart.classList.add("fa-solid");
+          heart.classList.remove("fa-regular");
+        });
+        heart.addEventListener("mouseout", (e) => {
+          heart.classList.add("fa-regular");
+          heart.classList.remove("fa-solid");
+        });
+        card.appendChild(heart);
 
         const desc = document.createElement("div");
         desc.classList.add("desc");
