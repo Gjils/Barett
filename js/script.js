@@ -69,33 +69,97 @@ document.addEventListener("DOMContentLoaded", () => {
     buildSlide(curSlide);
   }, 100000);
 
-
-
-
   let categoriesInf = [
     {
       image: "../img/home/categories/electric.jpeg",
-      rgbColor: "82,0,77"
+      rgbColor: "82,0,77",
+      name: "Электрогитары",
+      faIcon: "fa-bolt",
+      desc: "Электрогитара представляет собой современную и надежную инструментальную модель с широкими музыкальными возможностями и привлекательным дизайном",
+      href: "",
     },
     {
       image: "../img/home/categories/acoustic.jpg",
-      rgbColor: "0,40,82"
+      rgbColor: "0,40,82",
+      name: "Акустическая гитары",
+      faIcon: "fa-music",
+      desc: "Акустическая гитара идеально подходит для любителей музыки, благодаря своему качественному звуку и красивому ансамблю материалов",
+      href: "",
     },
     {
       image: "../img/home/categories/classical.jpeg",
-      rgbColor: "1,84,0"
+      rgbColor: "1,84,0",
+      name: "Классическая гитары",
+      faIcon: "fa-record-vinyl",
+      desc: "Классическая гитара – это идеальный инструмент для музыкальной игры различных жанров, благодаря ее качественному звуку и надежному корпусу",
+      href: "",
     },
     {
       image: "../img/home/categories/repair.jpeg",
-      rgbColor: "110,67,0"
-    }
-  ]
+      rgbColor: "110,67,0",
+      name: "Аксессуары",
+      faIcon: "fa-screwdriver-wrench",
+      desc: "В нашем интернет-магазине гитар вы можете найти все необходимые аксессуары для гитары, от передовых электронных устройств до импортных струн",
+      href: "",
+    },
+  ];
   const categories = document.querySelector(".categories");
   const cardsWrap = categories.querySelector(".cards");
   categoriesInf.forEach((el, it) => {
-    const card = document.createElement("div")
-    card.classList.add("card")
+    const card = document.createElement("a");
+    card.classList.add("card");
+    card.href = el["href"];
     card.style.backgroundImage = `linear-gradient(180deg, rgba(${el["rgbColor"]},0.5) 0%, rgba(${el["rgbColor"]},1) 100%), url(${el["image"]})`;
+    let name = document.createElement("h4");
+    name.textContent = el["name"];
+    let descWrap = document.createElement("div");
+    descWrap.classList.add("desc-wrap");
+    let icon = document.createElement("i");
+    icon.classList.add("fa-solid");
+    icon.classList.add(el["faIcon"]);
+    let desc = document.createElement("p");
+    desc.classList.add("desc");
+    desc.textContent = el["desc"];
+    descWrap.appendChild(desc);
+    descWrap.appendChild(icon);
+    card.appendChild(descWrap);
+    card.appendChild(name);
     cardsWrap.appendChild(card);
   });
+
+  items = fetch("info.json")
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      for (let i = 0; i < 8; i++) {
+        const topSellers = document.querySelector(".top-sellers");
+        const itemsWrap = topSellers.querySelector(".wrap");
+        const card = document.createElement("a");
+        card.classList.add("card");
+
+        const picture = document.createElement("div");
+        picture.classList.add("picture");
+        picture.style.backgroundImage = `url("${res["acoustic"][i]["images"][0]}")`;
+        card.appendChild(picture);
+
+        const desc = document.createElement("div");
+        desc.classList.add("desc");
+        desc.innerHTML = `
+      <div class="type">${res["acoustic"][i]["typeName"]}</div>
+      <h4>${
+        res["acoustic"][i]["name"].length > 35
+          ? res["acoustic"][i]["name"].slice(0, 35) + "..."
+          : res["acoustic"][i]["name"]
+      }</h4>
+      <div class="bot">
+        <div class="avaib">В наличии</div>
+        <div class="price">${res["acoustic"][i]["price"]} <span>₽</span></div>
+      </div>
+      `;
+        card.appendChild(desc);
+
+        itemsWrap.appendChild(card);
+      }
+    });
 });

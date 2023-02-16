@@ -6,8 +6,21 @@
 
 html
   overflow-x: hidden
+
+.sec-name
+  margin-top: 0
+  margin-bottom: 20px
+.line
+  margin: auto
+  width: 100%
+  height: 3px
+  background-color: black
+  border-radius: 10px
+  margin-bottom: 30px
+
 .container
   width: 1260px
+
 .home
   margin: 0 auto
   width: 100vw
@@ -88,16 +101,8 @@ html
 .categories
   background-color: #F5F5F5
   padding: 40px 0
-  h2
-    margin-top: 0
-    margin-bottom: 20px
   .line
-    margin: auto
-    width: 100%
-    height: 3px
     background-color: black
-    border-radius: 10px
-    margin-bottom: 30px
   .wrap
     max-width: 1700px
     margin: auto
@@ -107,9 +112,7 @@ html
       align-items: center
       height: calc((1260px)*.22/(8/13))
       .card
-        display: flex
-        justify-content: center
-        align-items: center
+        display: block
         aspect-ratio: 8/13
         width: 20%
         transition: .3s
@@ -119,3 +122,100 @@ html
         &:hover
           width: 22%
           background-size: 100%
+          .desc-wrap
+            height: 330px
+            i
+              bottom: 260px
+            p
+              top: 80px
+              opacity: 1
+
+        .desc-wrap
+          position: relative
+          width: 100%
+          height: 300px
+          padding: 0 30px
+          display: flex
+          justify-content: center
+          align-items: center
+          transition: .5s
+          i
+            font-size: 30pt
+            color: #F5F5F5
+            position: absolute
+            bottom: 0px
+            transition: .5s
+          p
+            position: absolute
+            font-size: 12pt
+            top: 300px
+            text-align: center
+            opacity: 0
+            transition: .3s
+            color: #F5F5F5
+        h4
+          text-align: center
+          color: #F5F5F5
+          font-size: 20pt
+
+.top-sellers
+  padding: 50px 0
+
+  background-color: #8fbc8f
+  .container
+    .sec-name
+      color: #F5F5F5
+    .line
+      background-color: #F5F5F5
+      margin-bottom: 30px
+    .wrap
+      width: 100%
+      display: flex
+      justify-content: space-between
+      flex-wrap: wrap
+      .card
+        padding-top: 10px
+        overflow: hidden
+        margin-top: 0
+        margin-bottom: 30px
+        height: 450px
+        width: 300px
+        border-radius: 20px
+        .picture
+          height: 60%
+          background-size: contain
+          background-position: center
+          background-repeat: no-repeat
+        .desc
+          height: 40%
+          padding: 20px 20px 0 20px
+          flex-direction: column
+          h4
+            margin-top: 0px
+            font-size: 20pt
+            color: black
+          .type
+            color: grey
+          .bot
+            width: 260px
+            display: flex
+            justify-content: space-between
+            align-items: center
+            position: absolute
+            bottom: 20px
+            .price
+              font-size: 20pt
+              color: black
+              span
+                color: gray
+            .avaib
+              font-size: 12pt
+              color: black
+              &::before
+                content: ""
+                display: inline-block
+                margin-right: 5px
+                width: 10px
+                height: 10px
+                border-radius: 100%
+                background-color: green
