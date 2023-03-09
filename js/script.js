@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       image: "../img/home/categories/acoustic.jpg",
       rgbColor: "0,40,82",
-      name: "Акустическая гитары",
+      name: "Акустические гитары",
       faIcon: "fa-music",
       desc: "Акустическая гитара идеально подходит для любителей музыки, благодаря своему качественному звуку и красивому ансамблю материалов",
       href: "",
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       image: "../img/home/categories/classical.jpeg",
       rgbColor: "1,84,0",
-      name: "Классическая гитары",
+      name: "Классические гитары",
       faIcon: "fa-record-vinyl",
       desc: "Классическая гитара – это идеальный инструмент для музыкальной игры различных жанров, благодаря ее качественному звуку и надежному корпусу",
       href: "",
@@ -179,4 +179,67 @@ document.addEventListener("DOMContentLoaded", () => {
         itemsWrap.appendChild(card);
       }
     });
+
+  let reviewsList = [
+    {
+      name: "Lorem Ipsum",
+      type: "Положительный",
+      reviewText:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet atque, voluptatem sint ipsa voluptates illo qui, molestiae aspernatur alias perferendis porro quasi itaque nihil ex deserunt minima. Commodi, magnam ducimus.",
+      picture:
+        "img/home/reviews/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+    },
+    {
+      name: "Lorem Ipsum",
+      type: "Положительный",
+      reviewText:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet atque, voluptatem sint ipsa voluptates illo qui, molestiae aspernatur alias perferendis porro quasi itaque nihil ex deserunt minima. Commodi, magnam ducimus.",
+      picture:
+        "img/home/reviews/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+    },
+    {
+      name: "Lorem Ipsum",
+      type: "Положительный",
+      reviewText:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet atque, voluptatem sint ipsa voluptates illo qui, molestiae aspernatur alias perferendis porro quasi itaque nihil ex deserunt minima. Commodi, magnam ducimus.",
+      picture:
+        "img/home/reviews/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+    },
+    {
+      name: "Lorem Ipsum",
+      type: "Положительный",
+      reviewText:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet atque, voluptatem sint ipsa voluptates illo qui, molestiae aspernatur alias perferendis porro quasi itaque nihil ex deserunt minima. Commodi, magnam ducimus.",
+      picture:
+        "img/home/reviews/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+    },
+    {
+      name: "Lorem Ipsum",
+      type: "Положительный",
+      reviewText:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet atque, voluptatem sint ipsa voluptates illo qui, molestiae aspernatur alias perferendis porro quasi itaque nihil ex deserunt minima. Commodi, magnam ducimus.",
+      picture:
+        "img/home/reviews/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+    },
+    {
+      name: "Lorem Ipsum",
+      type: "Положительный",
+      reviewText:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet atque, voluptatem sint ipsa voluptates illo qui, molestiae aspernatur alias perferendis porro quasi itaque nihil ex deserunt minima. Commodi, magnam ducimus.",
+      picture:
+        "img/home/reviews/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+    },
+  ];
+  let reviews = document.querySelector(".reviews");
+  let wrap = reviews.querySelector(".wrap");
+  reviewsList.forEach((it) => {
+    let card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+    <div class="type ${it.type == "Положительный" ? "green" : "red"}-text">${it.type}</div>
+    <div class="name">${it.name}</div>
+    <p class="review">${it.reviewText}</p>
+    <img class="picture" alt="profile picture" src="${it.picture}">`;
+    wrap.appendChild(card)
+  });
 });
