@@ -263,13 +263,14 @@ html
                 background-color: rgb(1,84,0)
 
 .reviews
-  padding: 50px 0
+  padding: 50px 0 30px 0
   .wrap
     margin: 0 auto
     width: 100%
     display: flex
     justify-content: space-between
     flex-wrap: wrap
+    margin-bottom: 20px
     .card
       padding: 20px
       border: solid 3px black
@@ -289,9 +290,20 @@ html
         bottom: -20px
         right: -20px
         width: 60px
-        height: 60px     
-        border-radius: 100% 
+        height: 60px
+        border-radius: 100%
         border: solid black 3px
+  .indicators
+    display: flex
+    justify-content: center
+    .indicator
+      border: 2px solid black
+      width: 20px
+      height: 20px
+      margin: 0 10px
+      border-radius: 100%
+    .active 
+      background-color: black
 
 .footer
   background-color: #49423D

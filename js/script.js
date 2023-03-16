@@ -229,17 +229,67 @@ document.addEventListener("DOMContentLoaded", () => {
       picture:
         "img/home/reviews/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
     },
+    {
+      name: "Lorem Ipsum",
+      type: "Положительный",
+      reviewText:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet atque, voluptatem sint ipsa voluptates illo qui, molestiae aspernatur alias perferendis porro quasi itaque nihil ex deserunt minima. Commodi, magnam ducimus.",
+      picture:
+        "img/home/reviews/0b7f4e9b-f59c-4024-9f06-b3dc12850ab7-1920-1080.jpg",
+    },
   ];
   let reviews = document.querySelector(".reviews");
-  let wrap = reviews.querySelector(".wrap");
-  reviewsList.forEach((it) => {
-    let card = document.createElement("div");
-    card.classList.add("card");
-    card.innerHTML = `
-    <div class="type ${it.type == "Положительный" ? "green" : "red"}-text">${it.type}</div>
-    <div class="name">${it.name}</div>
-    <p class="review">${it.reviewText}</p>
-    <img class="picture" alt="profile picture" src="${it.picture}">`;
-    wrap.appendChild(card)
+  function buildReviewsPage(reviewsOnPage) {
+    let reviews = document.querySelector(".reviews");
+    let wrap = reviews.querySelector(".wrap");
+    wrap.innerHTML = "";
+    reviewsOnPage.forEach((it) => {
+      let card = document.createElement("div");
+      card.classList.add("card");
+      card.innerHTML = `
+      <div class="type ${it.type == "Положительный" ? "green" : "red"}-text">${
+        it.type
+      }</div>
+      <div class="name">${it.name}</div>
+      <p class="review">${it.reviewText}</p>
+      <img class="picture" alt="profile picture" src="${it.picture}">`;
+      wrap.appendChild(card);
+    });
+  }
+
+  const pageQuant = 3;
+  let curPage = 1;
+  let itemsPerPage = 6;
+  const indicators = reviews.querySelector(".indicators");
+  for (let i = 1; i <= pageQuant; i++) {
+    const indicator = document.createElement("div");
+    indicator.classList.add("indicator");
+    indicator.customIndex = i;
+    indicators.appendChild(indicator);
+  }
+
+  function changeIndicator(indicators, targetPage, curPage) {
+    const indicatorList = indicators.querySelectorAll(".indicator");
+    indicatorList[curPage - 1].classList.remove("active");
+    indicatorList[targetPage - 1].classList.add("active");
+  }
+
+  function changePage(targetPage, reviewsList) {
+    const reviewsOnPage = reviewsList.slice(
+      itemsPerPage * (targetPage - 1),
+      itemsPerPage * targetPage
+    );
+    changeIndicator(indicators, targetPage, curPage);
+    buildReviewsPage(reviewsOnPage);
+    curPage = targetPage;
+  }
+
+  changePage(1, reviewsList);
+
+  const indicatorList = indicators.querySelectorAll(".indicator");
+  indicatorList.forEach((i, it) => {
+    i.addEventListener("click", (e) => {
+      changePage(e.currentTarget.customIndex, reviewsList);
+    });
   });
 });
