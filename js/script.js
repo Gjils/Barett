@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
+  let sectionHeights = []
   let home = document.querySelector(".home");
   let buttons = home.querySelectorAll("button");
 
   let buildSlide = function (curSlide) {
-    home.querySelector(".logo").style.filter = homeSlides[curSlide].filter;
-    home.querySelector(".bars").style.color = homeSlides[curSlide].subColor;
+    changeHeaderColor();
     home.querySelector("h1").textContent = homeSlides[curSlide].slideText;
     home.querySelector("h1").style.color = homeSlides[curSlide].subColor;
     home.querySelector(".next").style.backgroundColor =
@@ -38,24 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       mainColor: "#734222",
       subColor: "#4DBF85",
-      filter:
-        "invert(77%) sepia(10%) saturate(2212%) hue-rotate(96deg) brightness(87%) contrast(78%)",
       slideText: "Подберите инструмент для любимого хобби",
       image: "img/home/top-slider/hobby.jpg",
     },
     {
       mainColor: "#53377A",
       subColor: "#C7C332",
-      filter:
-        "invert(84%) sepia(86%) saturate(466%) hue-rotate(355deg) brightness(85%) contrast(81%)",
       slideText: "Найдите все для организации концерта",
       image: "img/home/top-slider/perf.jpg",
     },
     {
       mainColor: "#1164B4",
       subColor: "#CC9F72",
-      filter:
-        "invert(64%) sepia(42%) saturate(331%) hue-rotate(349deg) brightness(93%) contrast(98%)",
       slideText: "Начните учиться прямо сейчас",
       image: "img/home/top-slider/learn.jpg",
     },
@@ -63,11 +57,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let curSlide = 0;
 
+  let headerColor = {
+    mainColor: homeSlides[curSlide].mainColor,
+    subColor: homeSlides[curSlide].subColor,
+  };
+
   buildSlide(curSlide);
+  sectionHeights.push(home.)
+  console.log(sectionHeights)
   setInterval(() => {
     curSlide = (curSlide + 1) % 3;
     buildSlide(curSlide);
-  }, 100000);
+  }, 20000);
 
   let categoriesInf = [
     {
@@ -314,4 +315,23 @@ document.addEventListener("DOMContentLoaded", () => {
   arrowRight.addEventListener("click", (e) => {
     changePage(curPage + 1, reviewsList);
   });
+
+  window.addEventListener("scroll", changeHeaderColor)
+
+  function changeHeaderColor(e) {
+    if (window.scrollY < 580 && window.scrollY >= 0) {
+      headerColor.mainColor = homeSlides[curSlide].mainColor;
+      headerColor.subColor = homeSlides[curSlide].subColor;
+    }
+    if (window.scrollY >= 580 && window.scrollY < 0) {
+      headerColor.mainColor = homeSlides[curSlide].mainColor;
+      headerColor.subColor = homeSlides[curSlide].subColor;
+    }
+    const header = document.querySelector("header");
+    header.style.backgroundColor = headerColor.mainColor;
+    header.querySelector(".logo").style.color = headerColor.subColor;
+    header.querySelector(".bars").style.color = headerColor.subColor;
+    header.querySelector(".cur-page").style.color = headerColor.subColor;
+  }
+
 });

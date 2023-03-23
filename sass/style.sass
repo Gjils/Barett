@@ -6,7 +6,6 @@
 
 html
   overflow-x: hidden
-
 .hidden
   opacity: 0
 .sec-name
@@ -23,14 +22,41 @@ html
 .container
   width: 1260px
 
+header
+  top: 0
+  z-index: 1000
+  width: 100%
+  position: fixed
+  .container
+    display: flex
+    justify-content: space-between
+    > span
+      font-size: 25pt
+      line-height: 80px
+
+    .mini-menu
+      height: 100%
+      display: flex
+      justify-content: flex-end
+      .logo
+        position: relative
+        bottom: 4px
+        line-height: 80px
+        position: relative
+        font-size: 25pt
+        margin-right: 50px
+      .bars
+        position: relative
+        line-height: 80px
+        font-size: 20pt
 .home
-  margin: 0 auto
+  margin: 80px auto 0 auto
   width: 100vw
-  height: 600px
+  height: 500px
   background-color: #734222
   .next
     width: 100%
-    height: 600px
+    height: 500px
     position: absolute
     left: 100%
   .appear
@@ -42,19 +68,6 @@ html
     margin: 0 auto
     padding: 30px 0px 40px 0px
     width: 100%
-    .mini-menu
-      margin-bottom: 60px
-      height: 40px
-      display: flex
-      justify-content: flex-end
-      .logo
-        height: 100%
-        margin-right: 50px
-      .bars
-        line-height: 40px
-        font-size: 20pt
-        position: relative
-        top: 4px
     .wrap
       height: 350px
       display: flex
@@ -331,19 +344,18 @@ html
             background-color: black
 
 .footer
-  padding: 40px
+  padding: 40px 0 20px 0
   background-color: #49423D
-  height: 400px
   color: #ffefd5
   .wrap
     display: flex
     justify-content: space-between
+    margin-bottom: 40px
     .desc
       width: 400px
       font-size: 13pt
-      img
-        margin-bottom: 20px
-        filter: invert(82%) sepia(23%) saturate(250%) hue-rotate(344deg) brightness(108%) contrast(105%)
+      span
+        font-size: 25pt !important
     .sep
       height: 250px
       width: 2px
@@ -362,3 +374,26 @@ html
     .contacts
       li
         line-height: 2.3rem
+  .social
+    margin-bottom: 20px
+    display: flex
+    justify-content: center
+    i
+      font-size: 30pt
+      margin: 0 15px
+  .legal
+    display: flex
+    margin: 0 auto
+    width: 600px
+    justify-content: center
+    flex-wrap: wrap
+    align-items: center
+    span
+      line-height: 1rem
+      font-size: 8pt
+    .sep
+      height: .8rem
+      background-color: #ffefd5
+      width: 1.5px
+      border-radius: 3px
+      margin: 0 5px
