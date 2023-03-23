@@ -261,6 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let curPage = 1;
   let itemsPerPage = 6;
   const indicators = reviews.querySelector(".indicators");
+
   for (let i = 1; i <= pageQuant; i++) {
     const indicator = document.createElement("div");
     indicator.classList.add("indicator");
@@ -275,10 +276,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function changePage(targetPage, reviewsList) {
-    const reviewsOnPage = reviewsList.slice(
-      itemsPerPage * (targetPage - 1),
-      itemsPerPage * targetPage
-    );
+    // const reviewsOnPage = reviewsList.slice(
+    //   itemsPerPage * (targetPage - 1),
+    //   itemsPerPage * targetPage
+    // );
+    const reviewsOnPage = reviewsList.slice(0, itemsPerPage);
+    const arrowLeft = reviews.querySelector(".fa-chevron-left");
+    const arrowRight = reviews.querySelector(".fa-chevron-right");
+    if (targetPage == 1) {
+      arrowLeft.classList.add("hidden");
+    } else {
+      arrowLeft.classList.remove("hidden");
+    }
+    if (targetPage == pageQuant) {
+      arrowRight.classList.add("hidden");
+    } else {
+      arrowRight.classList.remove("hidden");
+    }
     changeIndicator(indicators, targetPage, curPage);
     buildReviewsPage(reviewsOnPage);
     curPage = targetPage;
@@ -291,5 +305,13 @@ document.addEventListener("DOMContentLoaded", () => {
     i.addEventListener("click", (e) => {
       changePage(e.currentTarget.customIndex, reviewsList);
     });
+  });
+  const arrowLeft = reviews.querySelector(".fa-chevron-left");
+  arrowLeft.addEventListener("click", (e) => {
+    changePage(curPage - 1, reviewsList);
+  });
+  const arrowRight = reviews.querySelector(".fa-chevron-right");
+  arrowRight.addEventListener("click", (e) => {
+    changePage(curPage + 1, reviewsList);
   });
 });

@@ -7,6 +7,8 @@
 html
   overflow-x: hidden
 
+.hidden
+  opacity: 0
 .sec-name
   margin-top: 0
   margin-bottom: 20px
@@ -293,18 +295,70 @@ html
         height: 60px
         border-radius: 100%
         border: solid black 3px
-  .indicators
+  .switch
     display: flex
-    justify-content: center
-    .indicator
-      border: 2px solid black
-      width: 20px
-      height: 20px
-      margin: 0 10px
-      border-radius: 100%
-    .active 
-      background-color: black
+    align-items: center
+    justify-content: space-between
+    .fa-solid
+      font-size: 25pt
+    .indicators
+      display: flex
+      .indicator
+        border: 3px solid black
+        width: 30px
+        height: 30px
+        margin: 0 10px
+        border-radius: 100%
+        &::after
+          content: ""
+          width: 16px
+          aspect-ratio: 1
+          opacity: 0
+          display: block
+          border-radius: 100%
+          position: relative
+          top: 4px
+          left: 4px
+        &:hover
+          &::after
+            transition-duration: .3s
+            opacity: 1
+            background-color: #BBBBBB
+        &.active
+          &::after
+            transition-duration: .3s
+            opacity: 1
+            background-color: black
 
 .footer
+  padding: 40px
   background-color: #49423D
   height: 400px
+  color: #ffefd5
+  .wrap
+    display: flex
+    justify-content: space-between
+    .desc
+      width: 400px
+      font-size: 13pt
+      img
+        margin-bottom: 20px
+        filter: invert(82%) sepia(23%) saturate(250%) hue-rotate(344deg) brightness(108%) contrast(105%)
+    .sep
+      height: 250px
+      width: 2px
+      background-color: #ffefd5
+    .column
+      span
+        display: inline-block
+        font-size: 20pt
+        margin-bottom: 10px
+      li
+        font-size: 14pt
+        margin-left: 20px
+        line-height: 1.8rem
+        li
+          font-size: 12pt
+    .contacts
+      li
+        line-height: 2.3rem
