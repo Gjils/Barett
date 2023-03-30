@@ -24,7 +24,7 @@ html
 
 header
   top: 0
-  z-index: 1000
+  z-index: 100000
   width: 100%
   position: fixed
   .container
@@ -149,13 +149,14 @@ header
         .desc-wrap
           position: relative
           width: 100%
-          height: 300px
+          height: 75%
           padding: 0 30px
           display: flex
           justify-content: center
           align-items: center
           transition: .5s
           i
+            text-align: center
             font-size: 30pt
             color: #F5F5F5
             position: absolute
@@ -164,7 +165,7 @@ header
           p
             position: absolute
             font-size: 12pt
-            top: 300px
+            top: 100px
             text-align: center
             opacity: 0
             transition: .3s
@@ -173,6 +174,48 @@ header
           text-align: center
           color: #F5F5F5
           font-size: 20pt
+@media only screen and (max-width: 600px)
+  .container
+    width: 90%
+    .sec-name
+      font-size: 25pt
+    .line
+      margin-bottom: 20px
+  .categories
+    padding-top: 20px
+    .wrap
+      width: 100%
+      .cards
+        height: auto
+        flex-wrap: wrap
+        .card
+          width: 47%
+          aspect-ratio: 8/13
+          .desc-wrap
+            height: 70%
+            p
+              font-size: 8pt
+            i
+              font-size: 18pt
+          h4
+            height: 30px
+            font-size: 11pt
+            margin-bottom: 0px
+          .expand
+            color: white
+            text-align: center
+            font-size: 9pt
+            height: 30px
+            line-height: 30px
+            text-decoration: underline
+        .expanded
+          .desc-wrap
+            height: 70%
+            i
+              bottom: 75%
+            p
+              top: 30%
+              opacity: 1
 
 .top-sellers
   padding: 50px 0
@@ -217,17 +260,6 @@ header
           height: 100%
           background-color: black
           transition: .2s
-        &:hover
-          bottom: 10px
-          border: 5px solid rgb(1,84,0)
-          .hover-bg
-            opacity: .1
-          .type
-            color: rgb(1,84,0) !important
-          span
-            color: rgb(1,84,0) !important
-          i
-            color: rgb(1,84,0)
         .picture
           position: relative
           z-index: 0
@@ -276,7 +308,42 @@ header
                 height: 10px
                 border-radius: 100%
                 background-color: rgb(1,84,0)
-
+      .active
+        bottom: 10px
+        border: 5px solid black
+        .hover-bg
+          opacity: .1
+@media only screen and (max-width: 600px)
+  .top-sellers
+    padding-top: 20px
+    padding-bottom: 20px
+    .container
+      .wrap
+        .card
+          width: 47%
+          height: auto
+          aspect-ratio: 2/3
+          i
+            font-size: 13pt
+            top: 15px
+            right: 15px
+          .desc
+            padding: 10px 15px 0 15px
+            .type
+              font-size: 9pt
+              margin-bottom: 5px
+            h4
+              font-size: 12pt
+            .bot
+              width: calc(100% - 30px)
+              bottom: 10px
+              .avaib
+                font-size: 8pt
+                &::before
+                  width: 8px
+                  height: 8px
+              .price
+                font-size: 12pt
 .reviews
   padding: 50px 0 30px 0
   .wrap
@@ -291,7 +358,7 @@ header
       border: solid 3px black
       margin-top: 0
       margin-bottom: 30px
-      height: 250px
+      height: 200px
       width: 400px
       border-radius: 20px
       transition: .3s
@@ -356,6 +423,7 @@ header
       font-size: 13pt
       span
         font-size: 25pt !important
+        margin-bottom: 20px !important
     .sep
       height: 250px
       width: 2px
