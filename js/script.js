@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (this.width < 600) {
           return this.mobile();
         } else {
-          return this.base();
+          return this.desktop();
         }
       }
 
@@ -165,6 +165,17 @@ document.addEventListener("DOMContentLoaded", () => {
         card.appendChild(expand);
         return card;
       }
+
+      desktop() {
+        const card = this.base();
+        card.addEventListener("mouseover", () => {
+          card.classList.add("on-hover");
+        });
+        card.addEventListener("mouseout", () => {
+          card.classList.remove("on-hover");
+        });
+        return card;
+      }
     }
 
     fetch("data/categories.json")
@@ -179,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
           cards.innerHTML = "";
           res.forEach((elem) => {
             cards.appendChild(
-              new CategoryCard(window.screen.width, elem).compilled
+              new CategoryCard(window.innerWidth, elem).compilled
             );
           });
         }
@@ -327,7 +338,7 @@ document.addEventListener("DOMContentLoaded", () => {
           )
           .sort(() => Math.random() - 0.5);
         items.forEach((item) => {
-          wrap.appendChild(new ItemCard(window.screen.width, item).compilled);
+          wrap.appendChild(new ItemCard(window.innerWidth, item).compilled);
         });
       }
       addToScreen();
@@ -435,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         let pageQuant = 3;
         let itemsPerPage = 6;
-        if (window.screen.width < 600) {
+        if (window.innerWidth < 600) {
           pageQuant = 6;
           itemsPerPage = 3;
         }
