@@ -371,7 +371,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }-text">${this.type}</div>
       <div class="name">${this.name}</div>
       <p class="review">${this.reviewText}</p>
-      <img class="picture" alt="profile picture" src="${this.picture}">`;
+      <div class="picture" alt="profile picture"></div>`;
+      const pic = card.querySelector(".picture"); 
+      pic.style.backgroundImage = `url("../${this.picture}")`;
+      console.log(pic.style.background);
+    
       return card;
     }
   }

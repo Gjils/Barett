@@ -119,7 +119,7 @@ header
         align-items: center
         .picture
           width: 80%
-          margin-bottom: 30px 
+          margin-bottom: 30px
         .info
           width: 100%
           h1
@@ -388,7 +388,8 @@ header
         margin-bottom: 10px
       .type
         color: green
-      img
+      .picture
+        background-size: cover
         position: absolute
         bottom: -20px
         right: -20px
@@ -431,6 +432,27 @@ header
             opacity: 1
             background-color: black
 @media only screen and (max-width: 600px)
+  .reviews
+    .container
+      .wrap
+        .card
+          .picture
+            width: 50px
+            height: 50px
+            bottom: -15px
+            right: -15px
+      .switch
+        .indicators
+          .indicator
+            margin: 0 6px
+            width: 26px
+            height: 26px
+            &::after
+              width: 14px
+              top: 3px
+              left: 3px
+        .fa-solid
+          font-size: 20pt
 
 .footer
   padding: 40px 0 20px 0
