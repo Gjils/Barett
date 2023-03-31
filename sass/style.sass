@@ -50,24 +50,14 @@ header
         line-height: 80px
         font-size: 20pt
 .home
-  padding: 80px 0 0 0
+  margin: 80px auto 0 auto
   width: 100vw
-  height: 500px
-  background-color: #734222
-  .next
-    width: 100%
-    height: 500px
-    position: absolute
-    left: 100%
-  .appear
-    transition: 1s
-    left: 0
+  background-size: 100% 100%
+
   .container
-    left: 0 !important
     height: 100%
     margin: 0 auto
     padding: 30px 0px 40px 0px
-    width: 100%
     .wrap
       height: 350px
       display: flex
@@ -86,14 +76,14 @@ header
           font-size: 35pt
         .options
           button
+            font-family: 'Gogh', sans-serif
             margin-top: 50px
             margin-right: 50px
             width: 250px
             height: 70px
             border-radius: 40px
             background-color: transparent
-            font-size: 15pt
-            font-weight: 500
+            font-size: 14pt
             transition: .2s
       .picture
         width: 35%
@@ -102,14 +92,6 @@ header
         overflow: hidden
         padding: 0px
         align-items: center
-        .next-pic
-          position: absolute
-          left: 0
-          bottom: 100%
-          transition: 0s
-        .appear-pic
-          bottom: 10px
-          transition: 1s
         img
           width: 100%
 
@@ -135,6 +117,17 @@ header
         background-image: linear-gradient(180deg, rgba(1,84,0,0.4) 0%, rgba(1,84,0,1) 100%),url("../img/home/categories/classical.jpeg")
         background-size: 110%
         background-position: center
+        &:hover
+          width: 22%
+          background-size: 100%
+          .desc-wrap
+            height: 330px
+            i
+              bottom: 260px
+            p
+              top: 80px
+              opacity: 1
+
         .desc-wrap
           position: relative
           width: 100%
@@ -163,21 +156,6 @@ header
           text-align: center
           color: #F5F5F5
           font-size: 20pt
-@media only screen and (min-width: 600px)
-  .categories
-    .wrap
-      .cards
-        .card
-          &:hover
-            width: 22%
-            background-size: 100%
-            .desc-wrap
-              height: 330px
-              i
-                bottom: 260px
-              p
-                top: 80px
-                opacity: 1
 @media only screen and (max-width: 600px)
   .container
     width: 90%
@@ -223,6 +201,7 @@ header
 
 .top-sellers
   padding: 50px 0
+
   background-color: #8fbc8f
   .container
     .sec-name
@@ -333,20 +312,20 @@ header
           .desc
             padding: 10px 15px 0 15px
             .type
-              font-size: 2.5vw
-              margin-bottom: 2%
+              font-size: 9pt
+              margin-bottom: 5px
             h4
-              font-size: 4vw
+              font-size: 12pt
             .bot
               width: calc(100% - 30px)
               bottom: 10px
               .avaib
-                font-size: 2.3vw
+                font-size: 8pt
                 &::before
                   width: 8px
                   height: 8px
               .price
-                font-size: 3.5vw
+                font-size: 12pt
 .reviews
   padding: 50px 0 30px 0
   .wrap

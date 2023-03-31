@@ -6,87 +6,111 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".reviews"),
     document.querySelector(".footer"),
   ];
-  let sectionHeights = [0];
-  let home = document.querySelector(".home");
-  
-  let buttons = home.querySelectorAll("button");
 
-  let buildSlide = function (curSlide) {
-    home.mainColor = homeSlides[curSlide].mainColor;
-    home.subColor = homeSlides[curSlide].subColor;
-    changeHeaderColor();
-    home.querySelector("h1").textContent = homeSlides[curSlide].slideText;
-    home.querySelector("h1").style.color = homeSlides[curSlide].subColor;
-    home.querySelector(".next").style.backgroundColor =
-      homeSlides[curSlide].mainColor;
-    home.querySelector(".next").classList.add("appear");
-    buttons.forEach((item) => {
-      item.style.backgroundColor = "transparent";
-      item.style.border = `3px solid ${homeSlides[curSlide].subColor}`;
-      item.style.color = homeSlides[curSlide].subColor;
-      item.addEventListener("mouseover", (e) => {
-        item.style.color = homeSlides[curSlide].mainColor;
-        item.style.backgroundColor = homeSlides[curSlide].subColor;
-      });
-      item.addEventListener("mouseout", (e) => {
-        item.style.color = homeSlides[curSlide].subColor;
-        item.style.backgroundColor = "transparent";
-      });
-    });
-    let pic = home.querySelector(".picture");
-    pic.querySelector(".next-pic").src = homeSlides[curSlide].image;
-    pic.querySelector(".next-pic").classList.add("appear-pic");
-    setTimeout(() => {
-      home.style.backgroundColor = homeSlides[curSlide].mainColor;
-      home.querySelector(".next").classList.remove("appear");
-      pic.querySelector(".curent").src = homeSlides[curSlide].image;
-      pic.querySelector(".next-pic").classList.remove("appear-pic");
-    }, 1000);
-  };
 
-  let homeSlides = [
-    {
-      mainColor: "#734222",
+
+  let homeSlides = [{
+      mainColor: "115, 66, 34",
       subColor: "#4DBF85",
       slideText: "Подберите инструмент для любимого хобби",
       image: "img/home/top-slider/hobby.jpg",
     },
     {
-      mainColor: "#53377A",
+      mainColor: "83, 55, 122",
       subColor: "#C7C332",
       slideText: "Найдите все для организации концерта",
       image: "img/home/top-slider/perf.jpg",
     },
     {
-      mainColor: "#1164B4",
+      mainColor: "17, 100, 180",
       subColor: "#CC9F72",
       slideText: "Начните учиться прямо сейчас",
       image: "img/home/top-slider/learn.jpg",
     },
   ];
-
   let curSlide = 0;
+  let prevColor = homeSlides[curSlide].mainColor;
+  let home = document.querySelector(".home");
 
-  let headerColor = {
-    mainColor: homeSlides[curSlide].mainColor,
-    subColor: homeSlides[curSlide].subColor,
-  };
+  let buttons = home.querySelectorAll("button");
 
-  buildSlide(curSlide);
-  console.log(sectionHeights);
+  buttons.forEach((item) => {
+    item.style.backgroundColor = "transparent";
+    item.style.border = `3px solid ${homeSlides[curSlide].subColor}`;
+    item.style.color = homeSlides[curSlide].subColor;
+
+    item.addEventListener("mouseover", (e) => {
+      item.style.color = `rgb(${homeSlides[curSlide].mainColor})`;
+      item.style.backgroundColor = homeSlides[curSlide].subColor;
+    });
+    item.addEventListener("mouseout", (e) => {
+      item.style.color = homeSlides[curSlide].subColor;
+      item.style.backgroundColor = "transparent";
+    });
+  });
+
+
+  function buildSlide(curSlide, prevColor) {
+    home.mainColor = `rgb(${homeSlides[curSlide].mainColor})`;
+    home.subColor = `${homeSlides[curSlide].subColor}`;
+    changeHeaderColor();
+    home.querySelector("h1").textContent = homeSlides[curSlide].slideText;
+    home.querySelector("h1").style.color = homeSlides[curSlide].subColor;
+    buttons.forEach((item) => {
+      item.style.backgroundColor = "transparent";
+      item.style.border = `3px solid ${homeSlides[curSlide].subColor}`;
+      item.style.color = homeSlides[curSlide].subColor;
+    });
+
+
+    let t = 0;
+
+    function easeInOut(t) {
+      if (t <= 0.5)
+        return 2.0 * t * t;
+      t -= 0.5;
+      return 2.0 * t * (1.0 - t) + 0.5;
+    }
+    const changeBg = setInterval(function () {
+      let arg = easeInOut(t / 100) * 100;
+      home.style.background = `linear-gradient(rgba(${homeSlides[curSlide].mainColor}, 1) 0%, rgba(${homeSlides[curSlide].mainColor}, 1) ${arg}%, rgba(${prevColor}, 1) ${arg}%, rgba(${prevColor}, 1) 100%`;
+      t += 0.5;
+      if (t > 100) {
+        clearInterval(changeBg);
+        setTimeout(() => {
+          i = 0;
+        }, 10);
+
+      }
+    }, 1);
+
+
+    let pic = home.querySelector(".picture");
+    pic.querySelector(".curent").src = homeSlides[curSlide].image;
+  }
+
+
+  buildSlide(curSlide, prevColor);
+
   setInterval(() => {
+    let prevColor = homeSlides[curSlide].mainColor;
     curSlide = (curSlide + 1) % 3;
-    buildSlide(curSlide);
-  }, 3000);
+    buildSlide(curSlide, prevColor);
+  }, 4000);
 
   // Секция категорий
   document.querySelector(".categories").mainColor = "#f5f5f5";
-  document.querySelector(".categories").subColor = "#000000";
-  {
+  document.querySelector(".categories").subColor = "#000000"; {
     class CategoryCard {
       constructor(
-        width,
-        { image, rgbColor, categoryName, faIcon, desc, href } = cardInf
+        width, {
+          image,
+          rgbColor,
+          categoryName,
+          faIcon,
+          desc,
+          href
+        } = cardInf
       ) {
         this.image = image;
         this.rgbColor = rgbColor;
@@ -159,8 +183,16 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".top-sellers").subColor = "#ffffff";
   class ItemCard {
     constructor(
-      width,
-      { id, type, color, typeName, name, images, desc, price } = item
+      width, {
+        id,
+        type,
+        color,
+        typeName,
+        name,
+        images,
+        desc,
+        price
+      } = item
     ) {
       this.color = color;
       this.width = width;
@@ -199,7 +231,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card.classList.add("card");
       card.id = `${this.type}/${this.id}`;
 
-      console.log(this.images[0]);
       card.innerHTML = `
           <div class="hover-bg"></div>
           <div class="picture"></div>
@@ -248,7 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
       card.classList.add("card");
       card.id = `${this.type}/${this.id}`;
 
-      console.log(this.images[0]);
       card.innerHTML = `
           <div class="picture"></div>
           <i class="fa-heart fa-regular colored"></i>
@@ -295,7 +325,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let reviews = document.querySelector(".reviews");
 
   class ReviewCard {
-    constructor({ name, reviewText, type, picture } = item) {
+    constructor({
+      name,
+      reviewText,
+      type,
+      picture
+    } = item) {
       this.name = name;
       this.reviewText = reviewText;
       this.type = type;
@@ -457,7 +492,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function changeHeaderColor(e) {
     sections.forEach((elem) => {
       if (window.scrollY >= elem.offsetTop - 80 && window.scrollY < elem.offsetTop + elem.offsetHeight - 80) {
-        console.log(elem.mainColor, elem.subColor, elem)
         const header = document.querySelector("header");
         header.style.backgroundColor = elem.mainColor;
         header.querySelector(".logo").style.color = elem.subColor;
