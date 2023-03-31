@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+  window.condition = window.innerWidth < 600 ? "mobile" : "desktop";
   const sections = [
     document.querySelector(".home"),
     document.querySelector(".categories"),
@@ -195,7 +196,16 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         }
         addToScreen();
-        window.addEventListener("resize", addToScreen);
+        window.addEventListener("resize", () => {
+          if (window.condition == "mobile" && window.innerWidth >= 600) {
+            addToScreen();
+            window.condition = "desktop";
+          }
+          if (window.condition == "desktop" && window.innerWidth < 600) {
+            addToScreen();
+            window.condition = "mobile";
+          }
+        });
       });
   }
 
@@ -342,7 +352,16 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
       addToScreen();
-      window.addEventListener("resize", addToScreen);
+      window.addEventListener("resize", () => {
+        if (window.condition == "mobile" && window.innerWidth >= 600) {
+          addToScreen();
+          window.condition = "desktop";
+        }
+        if (window.condition == "desktop" && window.innerWidth < 600) {
+          addToScreen();
+          window.condition = "mobile";
+        }
+      });
     });
 
   // Секция отзывов
@@ -372,10 +391,9 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="name">${this.name}</div>
       <p class="review">${this.reviewText}</p>
       <div class="picture" alt="profile picture"></div>`;
-      const pic = card.querySelector(".picture"); 
+      const pic = card.querySelector(".picture");
       pic.style.backgroundImage = `url("../${this.picture}")`;
-      console.log(pic.style.background);
-    
+
       return card;
     }
   }
@@ -518,7 +536,16 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       }
       addToScreen();
-      window.addEventListener("resize", addToScreen);
+      window.addEventListener("resize", () => {
+        if (window.condition == "mobile" && window.innerWidth >= 600) {
+          addToScreen();
+          window.condition = "desktop";
+        }
+        if (window.condition == "desktop" && window.innerWidth < 600) {
+          addToScreen();
+          window.condition = "mobile";
+        }
+      });
     });
   window.addEventListener("scroll", changeHeaderColor);
 
