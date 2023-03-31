@@ -148,6 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
         expand.classList.add("expand");
         expand.textContent = "Подробнее";
         expand.addEventListener("touchstart", (event) => {
+          card.addEventListener("touchend", (e) => {
+            e.preventDefault();
+          });
           card.addEventListener("click", (e) => {
             e.preventDefault();
           });
@@ -169,12 +172,19 @@ document.addEventListener("DOMContentLoaded", () => {
         return res.json();
       })
       .then((res) => {
-        res.forEach((elem) => {
+        addToScreen();
+
+        function addToScreen() {
           const cards = document.querySelector(".categories .cards");
-          cards.appendChild(
-            new CategoryCard(window.screen.width, elem).compilled
-          );
-        });
+          cards.innerHTML = "";
+          res.forEach((elem) => {
+            cards.appendChild(
+              new CategoryCard(window.screen.width, elem).compilled
+            );
+          });
+        }
+        addToScreen();
+        window.addEventListener("resize", addToScreen);
       });
   }
 
@@ -306,17 +316,22 @@ document.addEventListener("DOMContentLoaded", () => {
       return res.json();
     })
     .then((res) => {
-      const wrap = document.querySelector(".top-sellers .wrap");
-      const items = []
-        .concat(
-          res.acoustic.slice(0, 3),
-          res.electric.slice(0, 3),
-          res.ench.slice(7, 9)
-        )
-        .sort(() => Math.random() - 0.5);
-      items.forEach((item) => {
-        wrap.appendChild(new ItemCard(window.screen.width, item).compilled);
-      });
+      function addToScreen() {
+        const wrap = document.querySelector(".top-sellers .wrap");
+        wrap.innerHTML = "";
+        const items = []
+          .concat(
+            res.acoustic.slice(0, 3),
+            res.electric.slice(0, 3),
+            res.ench.slice(7, 9)
+          )
+          .sort(() => Math.random() - 0.5);
+        items.forEach((item) => {
+          wrap.appendChild(new ItemCard(window.screen.width, item).compilled);
+        });
+      }
+      addToScreen();
+      window.addEventListener("resize", addToScreen);
     });
 
   // Секция отзывов
@@ -389,100 +404,106 @@ document.addEventListener("DOMContentLoaded", () => {
       return res.json();
     })
     .then((items) => {
-      function getReviewsList(curPage, items) {
-        return items.slice(
-          itemsPerPage * (curPage - 1),
-          itemsPerPage * curPage
-        );
-      }
+      function addToScreen() {
+        function getReviewsList(curPage, items) {
+          return items.slice(
+            itemsPerPage * (curPage - 1),
+            itemsPerPage * curPage
+          );
+        }
 
-      function changePage(
-        reviewsList,
-        prevPage,
-        curPage,
-        wrap,
-        indicators,
-        arrowLeft,
-        arrowRight,
-        pageQuant
-      ) {
-        currentPage = curPage;
-        const page = new ReviewsPage(
+        function changePage(
           reviewsList,
           prevPage,
           curPage,
+          wrap,
+          indicators,
           arrowLeft,
-          arrowRight
-        );
-        page.renderPage(wrap);
-        page.changeIndicators(indicators, arrowLeft, arrowRight, pageQuant);
-      }
-      let pageQuant = 3;
-      let itemsPerPage = 6;
-      if (window.screen.width < 600) {
-        pageQuant = 6;
-        itemsPerPage = 3;
-      }
-      let currentPage = 1;
-      const wrap = document.querySelector(".reviews .wrap");
-      const indicators = document.querySelector(".reviews .switch .indicators");
-      const arrowLeft = reviews.querySelector(".fa-chevron-left");
-      const arrowRight = reviews.querySelector(".fa-chevron-right");
-      for (let i = 1; i <= pageQuant; i++) {
-        const indicator = document.createElement("div");
-        indicator.classList.add("indicator");
-        indicators.appendChild(indicator);
-      }
-      indicators.querySelectorAll(".indicator").forEach((indicator, i) => {
-        indicator.addEventListener("click", () => {
+          arrowRight,
+          pageQuant
+        ) {
+          currentPage = curPage;
+          const page = new ReviewsPage(
+            reviewsList,
+            prevPage,
+            curPage,
+            arrowLeft,
+            arrowRight
+          );
+          page.renderPage(wrap);
+          page.changeIndicators(indicators, arrowLeft, arrowRight, pageQuant);
+        }
+        let pageQuant = 3;
+        let itemsPerPage = 6;
+        if (window.screen.width < 600) {
+          pageQuant = 6;
+          itemsPerPage = 3;
+        }
+        let currentPage = 1;
+        const wrap = document.querySelector(".reviews .wrap");
+        wrap.innerHTML = "";
+        const indicators = document.querySelector(".reviews .switch .indicators");
+        indicators.innerHTML = "";
+        const arrowLeft = reviews.querySelector(".fa-chevron-left");
+        const arrowRight = reviews.querySelector(".fa-chevron-right");
+        for (let i = 1; i <= pageQuant; i++) {
+          const indicator = document.createElement("div");
+          indicator.classList.add("indicator");
+          indicators.appendChild(indicator);
+        }
+        indicators.querySelectorAll(".indicator").forEach((indicator, i) => {
+          indicator.addEventListener("click", () => {
+            changePage(
+              getReviewsList(i + 1, items),
+              currentPage,
+              i + 1,
+              wrap,
+              indicators.querySelectorAll(".indicator"),
+              arrowLeft,
+              arrowRight,
+              pageQuant
+            );
+          });
+        });
+        incPage = function () {
           changePage(
-            getReviewsList(i + 1, items),
+            getReviewsList(currentPage + 1, items),
             currentPage,
-            i + 1,
+            currentPage + 1,
             wrap,
             indicators.querySelectorAll(".indicator"),
             arrowLeft,
             arrowRight,
             pageQuant
           );
-        });
-      });
-      incPage = function () {
+        };
+        decPage = function () {
+          changePage(
+            getReviewsList(currentPage - 1, items),
+            currentPage,
+            currentPage - 1,
+            wrap,
+            indicators.querySelectorAll(".indicator"),
+            arrowLeft,
+            arrowRight,
+            pageQuant
+          );
+        };
+        arrowLeft.addEventListener("click", decPage);
+        arrowRight.addEventListener("click", incPage);
         changePage(
-          getReviewsList(currentPage + 1, items),
-          currentPage,
-          currentPage + 1,
+          getReviewsList(1, items),
+          1,
+          1,
           wrap,
           indicators.querySelectorAll(".indicator"),
           arrowLeft,
           arrowRight,
           pageQuant
         );
-      };
-      decPage = function () {
-        changePage(
-          getReviewsList(currentPage - 1, items),
-          currentPage,
-          currentPage - 1,
-          wrap,
-          indicators.querySelectorAll(".indicator"),
-          arrowLeft,
-          arrowRight,
-          pageQuant
-        );
-      };
-      arrowLeft.addEventListener("click", decPage);
-      arrowRight.addEventListener("click", incPage);
-      changePage(
-        getReviewsList(1, items),
-        1,
-        1,
-        wrap,
-        indicators.querySelectorAll(".indicator"),
-        arrowLeft,
-        arrowRight,
-        pageQuant
-      );
+      }
+      addToScreen();
+      window.addEventListener("resize", addToScreen);
     });
   window.addEventListener("scroll", changeHeaderColor);
 
