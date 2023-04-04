@@ -209,6 +209,145 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
+  // Страница товара
+  class ItemPage {
+    constructor(
+      color,
+      id,
+      type,
+      typeName,
+      name,
+      images,
+      desc,
+      price
+    ) {
+      this.color = color;
+      this.id = id;
+      this.type = type;
+      this.typeName = typeName;
+      this.name = name;
+      this.images = images;
+      this.desc = desc;
+      this.price = price;
+    }
+
+    loadItemPage() {
+      const htmlElem = document.querySelector("html");
+      htmlElem.classList.add("on-background");
+      const body = document.querySelector("body");
+
+      const itemPageWrap = document.createElement("div");
+      itemPageWrap.classList.add("item-page-wrap");
+      itemPageWrap.innerHTML = `
+        <div class="item-page">
+          <div class="item-page-container">
+              <div class="images">
+                <div class="indicators"></div>
+                <div class="image-wrap">
+                  <div class="image-carousel">
+                    <div class="image-carousel-wrap"></div>
+                  </div>
+                  <div class="switch">
+                    <i class="fa-solid fa-chevron-left"></i>
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </div>
+                </div>
+              </div> 
+              <div class="desc"></div>
+          </div>
+        </div>      
+      `;
+      let imageWidth = 400;
+      const itemPage = itemPageWrap.querySelector(".item-page");
+      itemPage.addEventListener("click", (e) => {
+        e.stopPropagation();
+      });
+      itemPageWrap.addEventListener("click", () => {
+        htmlElem.classList.remove("on-background");
+        body.removeChild(itemPageWrap);
+      });
+
+
+      const indicators = itemPageWrap.querySelector(".indicators");
+      const imageCarousel = itemPageWrap.querySelector(".image-carousel-wrap");
+      let curPage = 0;
+      const color = this.color;
+      itemPageWrap.querySelector(".image-carousel").style.borderColor = color;
+      const pageQuant = this.images.length;
+      const arrowLeft = itemPageWrap.querySelector(".fa-chevron-left");
+      const arrowRight = itemPageWrap.querySelector(".fa-chevron-right");
+
+      this.images.forEach((image, i) => {
+        const indicator = document.createElement("div");
+        indicator.classList.add("indicator");
+        indicator.style.backgroundImage = `url("${image}")`;
+        indicator.addEventListener("click", () => {
+          curPage = i;
+          imageCarousel.style.right = `${imageWidth * i}px`;
+          refreshArrows(i);
+          refreshIndicators(i, color);
+        });
+        indicators.appendChild(indicator);
+
+        const imageBlock = document.createElement("div");
+        imageBlock.classList.add("image");
+        imageBlock.style.backgroundImage = `url("${image}")`;
+        imageCarousel.append(imageBlock);
+      });
+
+      arrowLeft.addEventListener("click", decPage);
+      arrowRight.addEventListener("click", incPage);
+
+      function decPage() {
+        curPage--;
+        imageCarousel.style.right = `${imageWidth * curPage}px`;
+        refreshArrows(curPage);
+        refreshIndicators(curPage, color);
+      }
+
+      function incPage() {
+        curPage++;
+        imageCarousel.style.right = `${imageWidth * curPage}px`;
+        refreshArrows(curPage);
+        refreshIndicators(curPage, color);
+      }
+
+      refreshArrows(0);
+      refreshIndicators(0, color);
+
+      function refreshArrows(curPage) {
+        if (curPage == 0) {
+          arrowLeft.classList.add("hidden");
+          arrowLeft.removeEventListener("click", decPage);
+        } else {
+          arrowLeft.classList.remove("hidden");
+          arrowLeft.addEventListener("click", decPage);
+        }
+        if (curPage == pageQuant - 1) {
+          arrowRight.classList.add("hidden");
+          arrowRight.removeEventListener("click", incPage);
+        } else {
+          arrowRight.classList.remove("hidden");
+          arrowRight.addEventListener("click", incPage);
+        }
+      }
+
+      function refreshIndicators(curPage, color) {
+        const indicatorsList = indicators.querySelectorAll(".indicator");
+        indicatorsList.forEach((el) => {
+          el.classList.remove("active");
+          el.style.borderColor = "grey";
+        });
+        indicatorsList[curPage].classList.add("active");
+        indicatorsList[curPage].style.borderColor = color;
+      }
+
+      body.appendChild(itemPageWrap);
+    }
+
+
+  }
+
   // Секция популярных товаров
   document.querySelector(".top-sellers").mainColor = "#8fbc8f";
   document.querySelector(".top-sellers").subColor = "#ffffff";
@@ -301,6 +440,10 @@ document.addEventListener("DOMContentLoaded", () => {
       card.addEventListener("mouseout", (event) => {
         card.classList.remove("active");
         this.uncolorize(card);
+      });
+      card.addEventListener("click", () => {
+        const itemPage = new ItemPage(this.color, this.id, this.type, this.typeName, this.name, this.images, this.desc, this.price);
+        itemPage.loadItemPage();
       });
       return card;
     }
@@ -554,7 +697,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function changeHeaderColor(e) {
     sections.forEach((elem) => {
-      if (window.scrollY >= elem.offsetTop - 80 && window.scrollY < elem.offsetTop + elem.offsetHeight - 80) {
+      if (window.scrollY >= elem.offsetTop - 80 && window.scrollY < elem.offsetTop + elem.offsetHeight - ((window.innerWidth < 600) ? 50 : 80)) {
         const header = document.querySelector("header");
         header.style.backgroundColor = elem.mainColor;
         header.querySelector(".logo").style.color = elem.subColor;
