@@ -285,7 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       const itemPage = itemPageWrap.querySelector(".item-page");
       let imageWidth = (window.innerWidth > 600) ? 400 : ((window.innerWidth * 0.95 - 20) * 0.9);
-      console.log(imageWidth);
       itemPage.addEventListener("click", (e) => {
         e.stopPropagation();
       });
@@ -531,6 +530,10 @@ document.addEventListener("DOMContentLoaded", () => {
         ".picture"
       ).style.backgroundImage = `url("${this.images[0]}")`;
       card.addEventListener("click", () => {
+        const itemPage = new ItemPage(this.color, this.id, this.type, this.typeName, this.name, this.images, this.desc, this.price);
+        itemPage.loadItemPage();
+      });
+      card.addEventListener("touchend", () => {
         const itemPage = new ItemPage(this.color, this.id, this.type, this.typeName, this.name, this.images, this.desc, this.price);
         itemPage.loadItemPage();
       });
