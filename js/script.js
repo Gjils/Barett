@@ -533,7 +533,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const itemPage = new ItemPage(this.color, this.id, this.type, this.typeName, this.name, this.images, this.desc, this.price);
         itemPage.loadItemPage();
       });
-      card.addEventListener("touchend", () => {
+      card.addEventListener("touchstart", () => {
         const itemPage = new ItemPage(this.color, this.id, this.type, this.typeName, this.name, this.images, this.desc, this.price);
         itemPage.loadItemPage();
       });
