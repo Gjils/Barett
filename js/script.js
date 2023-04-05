@@ -241,8 +241,11 @@ document.addEventListener("DOMContentLoaded", () => {
       itemPageWrap.innerHTML = `
         <div class="item-page">
           <div class="item-page-container">
+            <div class="top-container">
               <div class="images">
-                <div class="indicators"></div>
+                <div class="indicators-wrap">
+                  <div class="indicators"></div>
+                </div>
                 <div class="image-wrap">
                   <div class="image-carousel">
                     <div class="image-carousel-wrap"></div>
@@ -253,7 +256,29 @@ document.addEventListener("DOMContentLoaded", () => {
                   </div>
                 </div>
               </div> 
-              <div class="desc"></div>
+              <div class="info">
+                <div class="type">${this.typeName}</div>
+                <div class="name-wrap">
+                  <h3 class="name">${this.name}</h3>
+                  <div class="guarantee">Гарантия 6 мес</div>
+                </div>
+                <div class="price">${this.price}<span>₽</span></div>
+                <div class="buttons">
+                  <button class="add-to-cart"><i class="fa-solid fa-cart-plus"></i> В корзину</button>
+                  <button class="buy-now">Купить сейчас</button>
+                </div>
+                <div class="delivery-options">
+                  <div class="delivery">Доставка <a>завтра</a> <i class="fa-sharp fa-solid fa-truck"></i></div>
+                  <div class="self-pick-up">В наличии в <a>3 магазинах</a> <i class="fa-solid fa-shop"></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="desc">
+              <h4>Описание</h4>
+              <div>
+                ${this.desc}
+              </div>
+            </div>
           </div>
         </div>      
       `;
@@ -333,6 +358,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function refreshIndicators(curPage, color) {
+        let offsetInd = 0;
+        if (pageQuant > 5 && curPage >= 2) {
+          offsetInd = Math.min((curPage - 1) * 100, (pageQuant - 5) * 100);
+        }
+        indicators.style.top = `-${offsetInd}px`;
         const indicatorsList = indicators.querySelectorAll(".indicator");
         indicatorsList.forEach((el) => {
           el.classList.remove("active");
@@ -341,6 +371,17 @@ document.addEventListener("DOMContentLoaded", () => {
         indicatorsList[curPage].classList.add("active");
         indicatorsList[curPage].style.borderColor = color;
       }
+
+
+      const info = itemPageWrap.querySelector(".info");
+      info.querySelector(".type").style.color = this.color;
+      info.querySelector("span").style.color = this.color;
+      info.querySelector(".buy-now").style.backgroundColor = this.color;
+      info.querySelectorAll(".delivery-options a").forEach((el) => {
+        el.style.color = this.color;
+        el.style.borderColor = this.color;
+      });
+
 
       body.appendChild(itemPageWrap);
     }
