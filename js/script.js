@@ -241,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
       itemPageWrap.innerHTML = `
         <div class="item-page">
           <div class="item-page-container">
+            <i class="fa-solid fa-xmark"></i>
             <div class="top-container">
               <div class="images">
                 <div class="indicators-wrap">
@@ -282,10 +283,15 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>      
       `;
-      let imageWidth = 400;
       const itemPage = itemPageWrap.querySelector(".item-page");
+      let imageWidth = (window.innerWidth > 600) ? 400 : ((window.innerWidth * 0.95 - 20) * 0.9);
+      console.log(imageWidth);
       itemPage.addEventListener("click", (e) => {
         e.stopPropagation();
+      });
+      itemPageWrap.querySelector(".fa-xmark").addEventListener("click", () => {
+        htmlElem.classList.remove("on-background");
+        body.removeChild(itemPageWrap);
       });
       itemPageWrap.addEventListener("click", () => {
         htmlElem.classList.remove("on-background");
@@ -305,6 +311,10 @@ document.addEventListener("DOMContentLoaded", () => {
       this.images.forEach((image, i) => {
         const indicator = document.createElement("div");
         indicator.classList.add("indicator");
+        if (window.innerWidth < 600) {
+          indicator.style.width = `${imageWidth / 4.5}px`;
+          indicator.style.marginRight = `${imageWidth / 4.5 / 6}px`;
+        }
         indicator.style.backgroundImage = `url("${image}")`;
         indicator.addEventListener("click", () => {
           curPage = i;
@@ -359,10 +369,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       function refreshIndicators(curPage, color) {
         let offsetInd = 0;
-        if (pageQuant > 5 && curPage >= 2) {
-          offsetInd = Math.min((curPage - 1) * 100, (pageQuant - 5) * 100);
+        if (window.innerWidth > 600) {
+          if (pageQuant > 5 && curPage >= 2) {
+            offsetInd = Math.min((curPage - 1) * 100, (pageQuant - 5) * 100);
+          }
+          indicators.style.top = `-${offsetInd}px`;
+        } else {
+          if (pageQuant > 4 && curPage >= 2) {
+            offsetInd = Math.min((curPage - 1) * (imageWidth / 4.5 * (7 / 6)), (pageQuant - 4) * (imageWidth / 4.5 * (7 / 6)));
+          }
+          indicators.style.left = `-${offsetInd}px`;
         }
-        indicators.style.top = `-${offsetInd}px`;
         const indicatorsList = indicators.querySelectorAll(".indicator");
         indicatorsList.forEach((el) => {
           el.classList.remove("active");
@@ -513,6 +530,10 @@ document.addEventListener("DOMContentLoaded", () => {
       card.querySelector(
         ".picture"
       ).style.backgroundImage = `url("${this.images[0]}")`;
+      card.addEventListener("click", () => {
+        const itemPage = new ItemPage(this.color, this.id, this.type, this.typeName, this.name, this.images, this.desc, this.price);
+        itemPage.loadItemPage();
+      });
       return card;
     }
   }
@@ -738,7 +759,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function changeHeaderColor(e) {
     sections.forEach((elem) => {
-      if (window.scrollY >= elem.offsetTop - 80 && window.scrollY < elem.offsetTop + elem.offsetHeight - ((window.innerWidth < 600) ? 50 : 80)) {
+      if (window.scrollY >= elem.offsetTop - ((window.innerWidth < 600) ? 50 : 80) && window.scrollY < elem.offsetTop + elem.offsetHeight - ((window.innerWidth < 600) ? 50 : 80)) {
+
         const header = document.querySelector("header");
         header.style.backgroundColor = elem.mainColor;
         header.querySelector(".logo").style.color = elem.subColor;

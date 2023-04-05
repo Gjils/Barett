@@ -35,6 +35,7 @@
   justify-content: center
   align-items: center
   .item-page
+    position: relative
     padding: 25px 5px 25px 5px
     width: 70%
     min-width: 1280px
@@ -46,6 +47,12 @@
       height: 100%
       overflow: scroll
       justify-content: center
+      .fa-xmark
+        position: absolute
+        top: 10px
+        right: 20px
+        font-size: 40px
+        color: grey
       .top-container
         display: flex
         justify-content: space-between
@@ -92,6 +99,7 @@
             .indicators
               position: relative
               top: 0px
+              left: 0px
               transition-duration: .2s
               .indicator
                 border: 2px solid grey
@@ -133,7 +141,7 @@
               border-radius: 20px
               border: 3px solid
               height: 70px
-              width: 200px
+              aspect-ratio: 20/7
               margin-left: 20px
               margin-bottom: 20px
               i
@@ -155,6 +163,61 @@
             font-size: 13pt
           p
             margin-bottom: 10px
+          h3
+            font-size: 17pt
+
+@media only screen and (max-width: 600px)
+  .item-page-wrap
+    .item-page
+      width: 95%
+      height: 95%
+      min-width: 0px
+      padding-top: 40px 
+      .fa-xmark
+        font-size: 30px
+      &-container
+        padding: 5px
+        .top-container
+          flex-direction: column
+          .images
+            flex-direction: column-reverse
+            .image-wrap
+              margin-bottom: 20px
+              .image-carousel
+                width: 90%
+                aspect-ratio: 1
+                height: auto
+              .switch
+                width: 90%
+                margin: 0 auto
+                i
+                  font-size: 40px
+            .indicators-wrap
+              margin: 0 auto
+              height: auto
+              width: 90%
+              overflow: hidden
+              .indicators
+                width: 2000px
+                display: flex
+                .indicator
+                  aspect-ratio: 1
+                  height: auto
+          .info
+            margin: 0 auto
+            width: 90%
+            .type
+              font-size: 13pt
+            .name-wrap
+              .name
+                font-size: 25pt
+              .guarantee
+                font-size: 11pt
+            .price
+              font-size: 35pt
+        .desc
+          width: 90%
+          margin: 0 auto
 
 header
   top: 0
