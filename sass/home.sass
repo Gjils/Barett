@@ -1,0 +1,377 @@
+﻿*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  font-family: 'Gogh', sans-serif
+
+a
+  color: black
+  &.link-active
+    text-decoration: underline !important
+.hidden
+  opacity: 0
+
+.full-hid
+  display: none !important
+
+.sec-name
+  margin-top: 0
+  margin-bottom: 20px
+.line
+  margin: auto
+  width: 100%
+  height: 3px
+  background-color: black
+  border-radius: 10px
+  margin-bottom: 30px
+
+.container
+  width: 1260px
+
+.on-background
+  overflow: hidden
+
+
+.home
+  margin: 0 auto
+  padding-top: 80px
+  width: 100vw
+  background-size: 100% 100%
+
+  .container
+    margin: 0 auto
+    padding: 30px 0px 40px 0px
+    .wrap
+      display: flex
+      justify-content: space-between
+      .info
+        width: 50%
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        position: relative
+        z-index: 100
+        h1
+          margin-top: 0
+          text-align: left
+          font-size: 35pt
+        .options
+          a
+            button
+              cursor: pointer
+              font-family: 'Gogh', sans-serif
+              margin-top: 50px
+              margin-right: 50px
+              width: 250px
+              height: 70px
+              border-radius: 40px
+              background-color: transparent
+              font-size: 14pt
+              transition: .2s
+      .picture
+        width: 35%
+        display: flex
+        position: relative
+        overflow: hidden
+        padding: 0px
+        align-items: center
+        img
+          width: 100%
+@media only screen and (max-width: 600px)
+  .home
+    padding-top: 50px
+    .container
+      .wrap
+        flex-direction: column-reverse
+        align-items: center
+        .picture
+          width: 80%
+          margin-bottom: 30px
+        .info
+          width: 100%
+          h1
+            font-size: 25pt
+            text-align: center
+            width: 100%
+            height: 200px
+          .options
+            width: 100%
+            text-align: center
+            a
+              button
+                margin: 0
+
+.categories
+  background-color: #F5F5F5
+  padding: 40px 0
+  .line
+    background-color: black
+  .wrap
+    max-width: 1700px
+    margin: auto
+    .cards
+      display: flex
+      justify-content: space-between
+      align-items: center
+      height: calc((1260px)*.22/(8/13))
+      .card
+        padding: 0 10px
+        display: block
+        aspect-ratio: 8/13
+        width: 20%
+        transition: .3s
+        background-image: linear-gradient(180deg, rgba(1,84,0,0.4) 0%, rgba(1,84,0,1) 100%),url("../img/home/categories/classical.jpeg")
+        background-size: 110%
+        background-position: center
+        .desc-wrap
+          position: relative
+          width: 100%
+          height: 75%
+          padding: 0 30px
+          display: flex
+          justify-content: center
+          align-items: center
+          transition: .5s
+          i
+            text-align: center
+            font-size: 30pt
+            color: #F5F5F5
+            position: absolute
+            bottom: 0px
+            transition: .5s
+          p
+            position: absolute
+            font-size: 12pt
+            top: 100px
+            text-align: center
+            opacity: 0
+            transition: .3s
+            color: #F5F5F5
+        h4
+          text-align: center
+          color: #F5F5F5
+          font-size: 20pt
+      .on-hover
+        width: 22%
+        background-size: 100%
+        .desc-wrap
+          height: 330px
+          i
+            bottom: 260px
+          p
+            top: 80px
+            opacity: 1
+@media only screen and (max-width: 600px)
+  .container
+    width: 90%
+    .sec-name
+      font-size: 25pt
+    .line
+      margin-bottom: 20px
+  .categories
+    padding-top: 20px
+    .wrap
+      width: 100%
+      .cards
+        height: auto
+        flex-wrap: wrap
+        .card
+          width: 47%
+          aspect-ratio: 8/13
+          .desc-wrap
+            height: 70%
+            p
+              font-size: 2.5vw
+            i
+              font-size: 18pt
+          h4
+            height: 30px
+            font-size: 11pt
+            margin-bottom: 0px
+          .expand
+            position: relative
+            z-index: 10000
+            color: white
+            text-align: center
+            font-size: 9pt
+            height: 30px
+            line-height: 30px
+            text-decoration: underline
+        .expanded
+          .desc-wrap
+            height: 70%
+            i
+              bottom: 75%
+            p
+              top: 30%
+              opacity: 1
+
+.reviews
+  padding: 50px 0 30px 0
+  .wrap
+    margin: 0 auto
+    width: 100%
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    margin-bottom: 20px
+    .card
+      padding: 20px
+      border: solid 3px black
+      margin-top: 0
+      margin-bottom: 30px
+      height: 200px
+      max-width: 400px
+      border-radius: 20px
+      transition: .3s
+      .name
+        font-size: 17pt
+        margin-bottom: 10px
+      .type
+        color: green
+      .picture
+        background-size: cover
+        position: absolute
+        bottom: -20px
+        right: -20px
+        width: 60px
+        height: 60px
+        border-radius: 100%
+        border: solid black 3px
+  .switch
+    display: flex
+    align-items: center
+    justify-content: space-between
+    .fa-solid
+      font-size: 25pt
+    .indicators
+      display: flex
+      .indicator
+        border: 3px solid black
+        width: 30px
+        height: 30px
+        margin: 0 10px
+        border-radius: 100%
+        &::after
+          content: ""
+          width: 16px
+          aspect-ratio: 1
+          opacity: 0
+          display: block
+          border-radius: 100%
+          position: relative
+          top: 4px
+          left: 4px
+        &:hover
+          &::after
+            transition-duration: .3s
+            opacity: 1
+            background-color: #BBBBBB
+        &.active
+          &::after
+            transition-duration: .3s
+            opacity: 1
+            background-color: black
+@media only screen and (max-width: 600px)
+  .reviews
+    .container
+      .wrap
+        .card
+          max-width: 100%
+          .picture
+            width: 50px
+            height: 50px
+            bottom: -15px
+            right: -15px
+      .switch
+        .indicators
+          .indicator
+            margin: 0 6px
+            width: 26px
+            height: 26px
+            &::after
+              width: 14px
+              top: 3px
+              left: 3px
+        .fa-solid
+          font-size: 20pt
+
+.footer
+  padding: 40px 0 20px 0
+  background-color: #49423D
+  color: #ffefd5
+  .wrap
+    display: flex
+    justify-content: space-between
+    margin-bottom: 40px
+    .desc
+      width: 400px
+      font-size: 13pt
+      span
+        font-size: 25pt !important
+        margin-bottom: 20px !important
+    .sep
+      height: 250px
+      width: 2px
+      background-color: #ffefd5
+    .column
+      span
+        display: inline-block
+        font-size: 20pt
+        margin-bottom: 10px
+      li
+        font-size: 14pt
+        margin-left: 20px
+        line-height: 1.8rem
+        a
+          color: #ffefd5
+          .active
+            text-decoration: underline !important
+        li
+          font-size: 12pt
+    .contacts
+      li
+        line-height: 2.3rem
+  .social
+    margin-bottom: 20px
+    display: flex
+    justify-content: center
+    i
+      font-size: 30pt
+      margin: 0 15px
+  .legal
+    display: flex
+    margin: 0 auto
+    width: 600px
+    justify-content: center
+    flex-wrap: wrap
+    align-items: center
+    span
+      line-height: 1rem
+      font-size: 8pt
+    .sep
+      height: .8rem
+      background-color: #ffefd5
+      width: 1.5px
+      border-radius: 3px
+      margin: 0 5px
+@media only screen and (max-width: 600px)
+  .footer
+    .wrap
+      flex-direction: column
+      .desc
+        width: 100%
+        p
+          font-size: 12pt
+      .sep
+        width: 100%
+        height: 3px
+        margin: 20px 0
+    .legal
+      width: 100%
+      display: flex
+      flex-direction: column
+      span
+        line-height: 20px
+      .sep
+        display: none

@@ -1,0 +1,115 @@
+.menu-wrap
+  overflow: hidden
+  z-index: 10000000
+  position: fixed
+  background-color: rgba(0, 0, 0, .5)
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
+  .menu
+    padding: 20px 50px 0 0
+    position: absolute
+    text-align: right
+    transition-duration: .3s
+    transition-property: right
+    position: fixed
+    background-color: white
+    overflow: scroll
+    width: 400px
+    height: 100vh
+    right: -400px
+    .fa-xmark
+      position: absolute
+      top: 20px
+      left: 35px
+      font-size: 40px
+    h2
+      font-size: 30pt
+      margin-bottom: 10px
+    .sep
+      height: 2px
+      width: 90%
+      background-color: black
+      margin-left: auto
+    .column
+      span
+        display: inline-block
+        font-size: 20pt
+        margin-top: 10px
+        margin-bottom: 5px
+      li
+        font-size: 17pt
+        margin-right: 25px
+        line-height: 2.5rem
+        li
+          font-size: 15pt
+@media only screen and (max-width: 600px)
+  .menu-wrap
+    .menu
+      padding-right: 20px
+      width: 85%
+      right: -85%
+      .fa-xmark
+
+        left: 7%
+        top: 15px
+        font-size: 30px
+      h2
+        font-size: 20pt
+      .column
+        span
+          margin: 5px 0 0 0
+          font-size: 15pt
+        li
+          margin-right: 15px
+          line-height: 2rem
+          font-size: 13pt
+          li
+            font-size: 12pt
+
+header
+  top: 0
+  z-index: 100000
+  width: 100%
+  height: 80px
+  position: fixed
+  .container
+    display: flex
+    justify-content: space-between
+    > span
+      font-size: 25pt
+      line-height: 80px
+
+    .mini-menu
+      height: 100%
+      display: flex
+      justify-content: flex-end
+      .logo
+        position: relative
+        bottom: 4px
+        line-height: 80px
+        position: relative
+        font-size: 25pt
+        margin-right: 50px
+      .bars
+        cursor: pointer
+        position: relative
+        line-height: 80px
+        font-size: 20pt
+@media only screen and (max-width: 600px)
+  header
+    height: 50px
+    .container
+      > span
+        line-height: 50px
+        font-size: 15pt
+      .mini-menu
+        .logo
+          line-height: 50px
+          font-size: 15pt
+          margin-right: 20px
+          bottom: 2px
+        .bars
+          line-height: 50px
+          font-size: 16pt
