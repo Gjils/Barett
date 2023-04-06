@@ -8,9 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".footer"),
   ];
 
-
-
-  let homeSlides = [{
+  let homeSlides = [
+    {
       mainColor: "115, 66, 34",
       subColor: "#4DBF85",
       slideText: "Подберите инструмент для любимого хобби",
@@ -50,7 +49,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  function showMenu() {
+    const htmlElem = document.querySelector("html");
+    htmlElem.classList.add("on-background");
 
+    const menuWrap = document.querySelector(".menu-wrap");
+    menuWrap.classList.remove("hidden");
+    menu = menuWrap.querySelector(".menu");
+    setTimeout(() => {
+      menu.style.right = "0px";
+    }, 0);
+
+    menuWrap.addEventListener("click", () => {
+      htmlElem.classList.remove("on-background");
+      menuWrap.classList.add("hidden");
+      menu.style.right = null;
+    });
+  }
   function buildSlide(curSlide, prevColor) {
     home.mainColor = `rgb(${homeSlides[curSlide].mainColor})`;
     home.subColor = `${homeSlides[curSlide].subColor}`;
@@ -63,12 +78,10 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.color = homeSlides[curSlide].subColor;
     });
 
-
     let t = 0;
 
     function easeInOut(t) {
-      if (t <= 0.5)
-        return 2.0 * t * t;
+      if (t <= 0.5) return 2.0 * t * t;
       t -= 0.5;
       return 2.0 * t * (1.0 - t) + 0.5;
     }
@@ -81,15 +94,12 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           i = 0;
         }, 10);
-
       }
     }, 1);
-
 
     let pic = home.querySelector(".picture");
     pic.querySelector(".curent").src = homeSlides[curSlide].image;
   }
-
 
   buildSlide(curSlide, prevColor);
 
@@ -97,21 +107,16 @@ document.addEventListener("DOMContentLoaded", () => {
     let prevColor = homeSlides[curSlide].mainColor;
     curSlide = (curSlide + 1) % 3;
     buildSlide(curSlide, prevColor);
-  }, 4000);
+  }, 40000);
 
   // Секция категорий
   document.querySelector(".categories").mainColor = "#f5f5f5";
-  document.querySelector(".categories").subColor = "#000000"; {
+  document.querySelector(".categories").subColor = "#000000";
+  {
     class CategoryCard {
       constructor(
-        width, {
-          image,
-          rgbColor,
-          categoryName,
-          faIcon,
-          desc,
-          href
-        } = cardInf
+        width,
+        { image, rgbColor, categoryName, faIcon, desc, href } = cardInf,
       ) {
         this.image = image;
         this.rgbColor = rgbColor;
@@ -140,6 +145,9 @@ document.addEventListener("DOMContentLoaded", () => {
                           <i class="${this.faIcon} fa-solid"></i>
                         </div>
                         <h4>${this.categoryName}</h4>`;
+        card.addEventListener("click", () => {
+          window.location.href = this.href;
+        });
         return card;
       }
 
@@ -191,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
           cards.innerHTML = "";
           res.forEach((elem) => {
             cards.appendChild(
-              new CategoryCard(window.innerWidth, elem).compilled
+              new CategoryCard(window.innerWidth, elem).compilled,
             );
           });
         }
@@ -211,16 +219,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Страница товара
   class ItemPage {
-    constructor(
-      color,
-      id,
-      type,
-      typeName,
-      name,
-      images,
-      desc,
-      price
-    ) {
+    constructor(color, id, type, typeName, name, images, desc, price) {
       this.color = color;
       this.id = id;
       this.type = type;
@@ -284,7 +283,8 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>      
       `;
       const itemPage = itemPageWrap.querySelector(".item-page");
-      let imageWidth = (window.innerWidth > 600) ? 400 : ((window.innerWidth * 0.95 - 20) * 0.9);
+      let imageWidth =
+        window.innerWidth > 600 ? 400 : (window.innerWidth * 0.95 - 20) * 0.9;
       itemPage.addEventListener("click", (e) => {
         e.stopPropagation();
       });
@@ -296,7 +296,6 @@ document.addEventListener("DOMContentLoaded", () => {
         htmlElem.classList.remove("on-background");
         body.removeChild(itemPageWrap);
       });
-
 
       const indicators = itemPageWrap.querySelector(".indicators");
       const imageCarousel = itemPageWrap.querySelector(".image-carousel-wrap");
@@ -375,7 +374,10 @@ document.addEventListener("DOMContentLoaded", () => {
           indicators.style.top = `-${offsetInd}px`;
         } else {
           if (pageQuant > 4 && curPage >= 2) {
-            offsetInd = Math.min((curPage - 1) * (imageWidth / 4.5 * (7 / 6)), (pageQuant - 4) * (imageWidth / 4.5 * (7 / 6)));
+            offsetInd = Math.min(
+              (curPage - 1) * ((imageWidth / 4.5) * (7 / 6)),
+              (pageQuant - 4) * ((imageWidth / 4.5) * (7 / 6)),
+            );
           }
           indicators.style.left = `-${offsetInd}px`;
         }
@@ -388,7 +390,6 @@ document.addEventListener("DOMContentLoaded", () => {
         indicatorsList[curPage].style.borderColor = color;
       }
 
-
       const info = itemPageWrap.querySelector(".info");
       info.querySelector(".type").style.color = this.color;
       info.querySelector("span").style.color = this.color;
@@ -398,11 +399,8 @@ document.addEventListener("DOMContentLoaded", () => {
         el.style.borderColor = this.color;
       });
 
-
       body.appendChild(itemPageWrap);
     }
-
-
   }
 
   // Секция популярных товаров
@@ -410,16 +408,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".top-sellers").subColor = "#ffffff";
   class ItemCard {
     constructor(
-      width, {
-        id,
-        type,
-        color,
-        typeName,
-        name,
-        images,
-        desc,
-        price
-      } = item
+      width,
+      { id, type, color, typeName, name, images, desc, price } = item,
     ) {
       this.color = color;
       this.width = width;
@@ -474,7 +464,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>`;
 
       card.querySelector(
-        ".picture"
+        ".picture",
       ).style.backgroundImage = `url("${this.images[0]}")`;
       const heart = card.querySelector(".fa-heart");
       heart.addEventListener("mouseover", (event) => {
@@ -499,7 +489,16 @@ document.addEventListener("DOMContentLoaded", () => {
         this.uncolorize(card);
       });
       card.addEventListener("click", () => {
-        const itemPage = new ItemPage(this.color, this.id, this.type, this.typeName, this.name, this.images, this.desc, this.price);
+        const itemPage = new ItemPage(
+          this.color,
+          this.id,
+          this.type,
+          this.typeName,
+          this.name,
+          this.images,
+          this.desc,
+          this.price,
+        );
         itemPage.loadItemPage();
       });
       return card;
@@ -527,14 +526,32 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>`;
       this.colorize(card);
       card.querySelector(
-        ".picture"
+        ".picture",
       ).style.backgroundImage = `url("${this.images[0]}")`;
       card.addEventListener("click", () => {
-        const itemPage = new ItemPage(this.color, this.id, this.type, this.typeName, this.name, this.images, this.desc, this.price);
+        const itemPage = new ItemPage(
+          this.color,
+          this.id,
+          this.type,
+          this.typeName,
+          this.name,
+          this.images,
+          this.desc,
+          this.price,
+        );
         itemPage.loadItemPage();
       });
-      card.addEventListener("touchstart", () => {
-        const itemPage = new ItemPage(this.color, this.id, this.type, this.typeName, this.name, this.images, this.desc, this.price);
+      card.addEventListener("touchend", () => {
+        const itemPage = new ItemPage(
+          this.color,
+          this.id,
+          this.type,
+          this.typeName,
+          this.name,
+          this.images,
+          this.desc,
+          this.price,
+        );
         itemPage.loadItemPage();
       });
       return card;
@@ -552,7 +569,7 @@ document.addEventListener("DOMContentLoaded", () => {
           .concat(
             res.acoustic.slice(0, 3),
             res.electric.slice(0, 3),
-            res.ench.slice(7, 9)
+            res.ench.slice(7, 9),
           )
           .sort(() => Math.random() - 0.5);
         items.forEach((item) => {
@@ -578,12 +595,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let reviews = document.querySelector(".reviews");
 
   class ReviewCard {
-    constructor({
-      name,
-      reviewText,
-      type,
-      picture
-    } = item) {
+    constructor({ name, reviewText, type, picture } = item) {
       this.name = name;
       this.reviewText = reviewText;
       this.type = type;
@@ -649,7 +661,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function getReviewsList(curPage, items) {
           return items.slice(
             itemsPerPage * (curPage - 1),
-            itemsPerPage * curPage
+            itemsPerPage * curPage,
           );
         }
 
@@ -661,7 +673,7 @@ document.addEventListener("DOMContentLoaded", () => {
           indicators,
           arrowLeft,
           arrowRight,
-          pageQuant
+          pageQuant,
         ) {
           currentPage = curPage;
           const page = new ReviewsPage(
@@ -669,7 +681,7 @@ document.addEventListener("DOMContentLoaded", () => {
             prevPage,
             curPage,
             arrowLeft,
-            arrowRight
+            arrowRight,
           );
           page.renderPage(wrap);
           page.changeIndicators(indicators, arrowLeft, arrowRight, pageQuant);
@@ -683,7 +695,9 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentPage = 1;
         const wrap = document.querySelector(".reviews .wrap");
         wrap.innerHTML = "";
-        const indicators = document.querySelector(".reviews .switch .indicators");
+        const indicators = document.querySelector(
+          ".reviews .switch .indicators",
+        );
         indicators.innerHTML = "";
         const arrowLeft = reviews.querySelector(".fa-chevron-left");
         const arrowRight = reviews.querySelector(".fa-chevron-right");
@@ -702,7 +716,7 @@ document.addEventListener("DOMContentLoaded", () => {
               indicators.querySelectorAll(".indicator"),
               arrowLeft,
               arrowRight,
-              pageQuant
+              pageQuant,
             );
           });
         });
@@ -715,7 +729,7 @@ document.addEventListener("DOMContentLoaded", () => {
             indicators.querySelectorAll(".indicator"),
             arrowLeft,
             arrowRight,
-            pageQuant
+            pageQuant,
           );
         };
         decPage = function () {
@@ -727,7 +741,7 @@ document.addEventListener("DOMContentLoaded", () => {
             indicators.querySelectorAll(".indicator"),
             arrowLeft,
             arrowRight,
-            pageQuant
+            pageQuant,
           );
         };
         arrowLeft.addEventListener("click", decPage);
@@ -740,7 +754,7 @@ document.addEventListener("DOMContentLoaded", () => {
           indicators.querySelectorAll(".indicator"),
           arrowLeft,
           arrowRight,
-          pageQuant
+          pageQuant,
         );
       }
       addToScreen();
@@ -760,10 +774,19 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".footer").mainColor = "#49423D";
   document.querySelector(".footer").subColor = "#ffefd5";
 
+  document.querySelector("header .bars").addEventListener("click", () => {
+    showMenu();
+  });
   function changeHeaderColor(e) {
     sections.forEach((elem) => {
-      if (window.scrollY >= elem.offsetTop - ((window.innerWidth < 600) ? 50 : 80) && window.scrollY < elem.offsetTop + elem.offsetHeight - ((window.innerWidth < 600) ? 50 : 80)) {
-
+      if (
+        window.scrollY >=
+          elem.offsetTop - (window.innerWidth < 600 ? 50 : 80) &&
+        window.scrollY <
+          elem.offsetTop +
+            elem.offsetHeight -
+            (window.innerWidth < 600 ? 50 : 80)
+      ) {
         const header = document.querySelector("header");
         header.style.backgroundColor = elem.mainColor;
         header.querySelector(".logo").style.color = elem.subColor;

@@ -6,6 +6,8 @@
 
 .hidden
   opacity: 0
+  display: none !important
+
 .sec-name
   margin-top: 0
   margin-bottom: 20px
@@ -23,18 +25,41 @@
 .on-background
   overflow: hidden
 
-.item-page-wrap
-  z-index: 1000000
+.menu-wrap
+  overflow: hidden
+  z-index: 10000000
   position: fixed
+  background-color: rgba(0, 0, 0, .5)
   top: 0
   left: 0
   width: 100vw
   height: 100vh
+
+  .menu
+    position: absolute
+    transition-duration: .3s
+    transition-property: right
+    position: fixed
+    background-color: red
+    width: 500px
+    height: 100vh
+    right: -500px
+
+    
+
+.item-page-wrap
+  z-index: 1000000
+  position: fixed
   background-color: rgba(0, 0, 0, .5)
+  top: 0
+  left: 0
+  width: 100vw
+  height: 100vh
   display: flex
   justify-content: center
   align-items: center
   .item-page
+    z-index: 10000000
     position: relative
     padding: 25px 5px 25px 5px
     width: 70%
@@ -172,7 +197,7 @@
       width: 95%
       height: 95%
       min-width: 0px
-      padding-top: 40px 
+      padding-top: 40px
       .fa-xmark
         font-size: 30px
       &-container
@@ -244,6 +269,7 @@ header
         font-size: 25pt
         margin-right: 50px
       .bars
+        cursor: pointer
         position: relative
         line-height: 80px
         font-size: 20pt
@@ -288,16 +314,18 @@ header
           text-align: left
           font-size: 35pt
         .options
-          button
-            font-family: 'Gogh', sans-serif
-            margin-top: 50px
-            margin-right: 50px
-            width: 250px
-            height: 70px
-            border-radius: 40px
-            background-color: transparent
-            font-size: 14pt
-            transition: .2s
+          a
+            button
+              cursor: pointer
+              font-family: 'Gogh', sans-serif
+              margin-top: 50px
+              margin-right: 50px
+              width: 250px
+              height: 70px
+              border-radius: 40px
+              background-color: transparent
+              font-size: 14pt
+              transition: .2s
       .picture
         width: 35%
         display: flex
