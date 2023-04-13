@@ -186,8 +186,6 @@ class ItemPage {
 }
 
 // Секция популярных товаров
-document.querySelector(".top-sellers").mainColor = "#8fbc8f";
-document.querySelector(".top-sellers").subColor = "#ffffff";
 class ItemCard {
   constructor(
     width,
@@ -370,3 +368,5 @@ fetch("data/items.json")
       }
     });
   });
+
+export { ItemCard };

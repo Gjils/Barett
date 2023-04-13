@@ -1,3 +1,5 @@
+import { ItemCard } from "./items.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   window.condition = window.innerWidth < 600 ? "mobile" : "desktop";
   const sections = [
@@ -75,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (t > 100) {
         clearInterval(changeBg);
         setTimeout(() => {
-          i = 0;
+          t = 0;
         }, 10);
       }
     }, 1);
@@ -99,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     class CategoryCard {
       constructor(
         width,
-        { image, rgbColor, categoryName, faIcon, desc, href } = cardInf,
+        { image, rgbColor, categoryName, faIcon, desc, href } = cardInf
       ) {
         this.image = image;
         this.rgbColor = rgbColor;
@@ -170,6 +172,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+    document.querySelector(".top-sellers").mainColor = "#8fbc8f";
+    document.querySelector(".top-sellers").subColor = "#ffffff";
+    
     fetch("data/categories.json")
       .then((res) => {
         return res.json();
@@ -182,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
           cards.innerHTML = "";
           res.forEach((elem) => {
             cards.appendChild(
-              new CategoryCard(window.innerWidth, elem).compilled,
+              new CategoryCard(window.innerWidth, elem).compilled
             );
           });
         }
@@ -199,6 +204,38 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
   }
+
+  fetch("data/items.json")
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      function addToScreen() {
+        const wrap = document.querySelector(".top-sellers .wrap");
+        wrap.innerHTML = "";
+        const items = []
+          .concat(
+            res.acoustic.slice(0, 3),
+            res.electric.slice(0, 3),
+            res.ench.slice(7, 9)
+          )
+          .sort(() => Math.random() - 0.5);
+        items.forEach((item) => {
+          wrap.appendChild(new ItemCard(window.innerWidth, item).compilled);
+        });
+      }
+      addToScreen();
+      window.addEventListener("resize", () => {
+        if (window.condition == "mobile" && window.innerWidth >= 600) {
+          addToScreen();
+          window.condition = "desktop";
+        }
+        if (window.condition == "desktop" && window.innerWidth < 600) {
+          addToScreen();
+          window.condition = "mobile";
+        }
+      });
+    });
 
   // Секция отзывов
   document.querySelector(".reviews").mainColor = "#ffffff";
@@ -248,17 +285,13 @@ document.addEventListener("DOMContentLoaded", () => {
       indicators[this.curPage - 1].classList.add("active");
       if (this.curPage == 1) {
         arrowLeft.classList.add("hidden");
-        arrowLeft.removeEventListener("click", decPage);
       } else {
         arrowLeft.classList.remove("hidden");
-        arrowLeft.addEventListener("click", decPage);
       }
       if (this.curPage == pageQuant) {
         arrowRight.classList.add("hidden");
-        arrowRight.removeEventListener("click", incPage);
       } else {
         arrowRight.classList.remove("hidden");
-        arrowRight.addEventListener("click", incPage);
       }
     }
   }
@@ -272,7 +305,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function getReviewsList(curPage, items) {
           return items.slice(
             itemsPerPage * (curPage - 1),
-            itemsPerPage * curPage,
+            itemsPerPage * curPage
           );
         }
 
@@ -284,7 +317,7 @@ document.addEventListener("DOMContentLoaded", () => {
           indicators,
           arrowLeft,
           arrowRight,
-          pageQuant,
+          pageQuant
         ) {
           currentPage = curPage;
           const page = new ReviewsPage(
@@ -292,11 +325,36 @@ document.addEventListener("DOMContentLoaded", () => {
             prevPage,
             curPage,
             arrowLeft,
-            arrowRight,
+            arrowRight
           );
           page.renderPage(wrap);
           page.changeIndicators(indicators, arrowLeft, arrowRight, pageQuant);
         }
+
+        let incPage = function () {
+          changePage(
+            getReviewsList(currentPage + 1, items),
+            currentPage,
+            currentPage + 1,
+            wrap,
+            indicators.querySelectorAll(".indicator"),
+            arrowLeft,
+            arrowRight,
+            pageQuant
+          );
+        };
+        let decPage = function () {
+          changePage(
+            getReviewsList(currentPage - 1, items),
+            currentPage,
+            currentPage - 1,
+            wrap,
+            indicators.querySelectorAll(".indicator"),
+            arrowLeft,
+            arrowRight,
+            pageQuant
+          );
+        };
         let pageQuant = 3;
         let itemsPerPage = 6;
         if (window.innerWidth < 600) {
@@ -307,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const wrap = document.querySelector(".reviews .wrap");
         wrap.innerHTML = "";
         const indicators = document.querySelector(
-          ".reviews .switch .indicators",
+          ".reviews .switch .indicators"
         );
         indicators.innerHTML = "";
         const arrowLeft = reviews.querySelector(".fa-chevron-left");
@@ -327,34 +385,11 @@ document.addEventListener("DOMContentLoaded", () => {
               indicators.querySelectorAll(".indicator"),
               arrowLeft,
               arrowRight,
-              pageQuant,
+              pageQuant
             );
           });
         });
-        incPage = function () {
-          changePage(
-            getReviewsList(currentPage + 1, items),
-            currentPage,
-            currentPage + 1,
-            wrap,
-            indicators.querySelectorAll(".indicator"),
-            arrowLeft,
-            arrowRight,
-            pageQuant,
-          );
-        };
-        decPage = function () {
-          changePage(
-            getReviewsList(currentPage - 1, items),
-            currentPage,
-            currentPage - 1,
-            wrap,
-            indicators.querySelectorAll(".indicator"),
-            arrowLeft,
-            arrowRight,
-            pageQuant,
-          );
-        };
+
         arrowLeft.addEventListener("click", decPage);
         arrowRight.addEventListener("click", incPage);
         changePage(
@@ -365,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
           indicators.querySelectorAll(".indicator"),
           arrowLeft,
           arrowRight,
-          pageQuant,
+          pageQuant
         );
       }
       addToScreen();

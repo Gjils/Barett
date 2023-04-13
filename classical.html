@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Barett | Магазин</title>
+    <title>Barett | Классические гитары</title>
     <link href="https://fonts.cdnfonts.com/css/gogh" rel="stylesheet" />
     <!-- link gogh font -->
     <link
@@ -22,6 +22,8 @@
     <!-- link materialize -->
     <link rel="stylesheet" href="css/base.min.css" />
     <link rel="stylesheet" href="css/shop.min.css" />
+    <link rel="stylesheet" href="css/items.min.css" />
+    <link rel="stylesheet" href="css/category.min.css" />
     <!-- link style css -->
     <link rel="stylesheet" href="fonts/logo/style.css" />
   </head>
@@ -37,11 +39,15 @@
           <ul>
             <li><a href="index.html" class="">Главная</a></li>
             <li>
-              <a href="shop.html" class="link-active">Магазин</a>
+              <a href="shop.html">Магазин</a>
               <ul>
                 <li><a href="electric.html">Электрогитары</a></li>
                 <li><a href="acoustic.html">Акустические гитары</a></li>
-                <li><a href="classical.html">Классические гитары</a></li>
+                <li>
+                  <a href="classical.html" class="link-active"
+                    >Классические гитары</a
+                  >
+                </li>
                 <li><a href="acessories.html">Аксессуары</a></li>
               </ul>
             </li>
@@ -62,7 +68,7 @@
     </div>
     <header>
       <div class="container">
-        <span class="cur-page">Магазин</span>
+        <span class="cur-page">Классические гитары</span>
         <div class="mini-menu">
           <span class="icon-Logo logo"></span>
           <i class="fa-solid fa-bars bars"></i>
@@ -71,56 +77,11 @@
     </header>
     <div class="wrapper">
       <main>
-        <section class="categories">
+        <div class="items" id="classical">
           <div class="container">
-            <div class="cards">
-              <a class="card electric" href="electric.html">
-                <h4>Электрогитары</h4>
-                <p>
-                  Электрогитара представляет собой современную и надежную
-                  инструментальную модель с широкими музыкальными возможностями
-                  и привлекательным дизайном
-                </p>
-                <div class="">
-                  Перейти <i class="fa-solid fa-arrow-right"></i>
-                </div>
-              </a>
-              <a class="card acoustic" href="acoustic.html">
-                <h4>Акустические гитары</h4>
-                <p>
-                  Акустическая гитара идеально подходит для любителей музыки,
-                  благодаря своему качественному звуку и красивому ансамблю
-                  материалов
-                </p>
-                <div class="">
-                  Перейти <i class="fa-solid fa-arrow-right"></i>
-                </div>
-              </a>
-              <a class="card classical" href="classical.html">
-                <h4>Классические гитары</h4>
-                <p>
-                  Классическая гитара – это идеальный инструмент для музыкальной
-                  игры различных жанров, благодаря ее качественному звуку и
-                  надежному корпусу
-                </p>
-                <div class="">
-                  Перейти <i class="fa-solid fa-arrow-right"></i>
-                </div>
-              </a>
-              <a class="card accesories" href="acessories.html">
-                <h4>Аксессуары</h4>
-                <p>
-                  В нашем интернет-магазине гитар вы можете найти все
-                  необходимые аксессуары для гитары, от передовых электронных
-                  устройств до импортных струн
-                </p>
-                <div class="">
-                  Перейти <i class="fa-solid fa-arrow-right"></i>
-                </div>
-              </a>
-            </div>
+            <div class="wrap"></div>
           </div>
-        </section>
+        </div>
       </main>
       <footer>
         <div class="container">
@@ -140,11 +101,15 @@
               <ul>
                 <li><a href="index.html" class="">Главная</a></li>
                 <li>
-                  <a href="shop.html" class="link-active">Магазин</a>
+                  <a href="shop.html">Магазин</a>
                   <ul>
                     <li><a href="electric.html">Электрогитары</a></li>
                     <li><a href="acoustic.html">Акустические гитары</a></li>
-                    <li><a href="classical.html">Классические гитары</a></li>
+                    <li>
+                      <a href="classical.html" class="link-active"
+                        >Классические гитары</a
+                      >
+                    </li>
                     <li><a href="acessories.html">Аксессуары</a></li>
                   </ul>
                 </li>
@@ -183,5 +148,6 @@
     </div>
     <script src="js/shop.js"></script>
     <script src="js/base.js"></script>
+    <script src="js/category.js" type="module"></script>
   </body>
 </html>
