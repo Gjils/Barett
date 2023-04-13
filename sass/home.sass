@@ -1,40 +1,6 @@
-﻿*
-  padding: 0
-  margin: 0
-  box-sizing: border-box
-  font-family: 'Gogh', sans-serif
-
-a
-  color: black
-  &.link-active
-    text-decoration: underline !important
-.hidden
-  opacity: 0
-
-.full-hid
-  display: none !important
-
-.sec-name
-  margin-top: 0
-  margin-bottom: 20px
-.line
-  margin: auto
-  width: 100%
-  height: 3px
-  background-color: black
-  border-radius: 10px
-  margin-bottom: 30px
-
-.container
-  width: 1260px
-
-.on-background
-  overflow: hidden
-
-
+﻿
 .home
   margin: 0 auto
-  padding-top: 80px
   width: 100vw
   background-size: 100% 100%
 
@@ -162,12 +128,6 @@ a
             top: 80px
             opacity: 1
 @media only screen and (max-width: 600px)
-  .container
-    width: 90%
-    .sec-name
-      font-size: 25pt
-    .line
-      margin-bottom: 20px
   .categories
     padding-top: 20px
     .wrap
@@ -296,82 +256,3 @@ a
         .fa-solid
           font-size: 20pt
 
-.footer
-  padding: 40px 0 20px 0
-  background-color: #49423D
-  color: #ffefd5
-  .wrap
-    display: flex
-    justify-content: space-between
-    margin-bottom: 40px
-    .desc
-      width: 400px
-      font-size: 13pt
-      span
-        font-size: 25pt !important
-        margin-bottom: 20px !important
-    .sep
-      height: 250px
-      width: 2px
-      background-color: #ffefd5
-    .column
-      span
-        display: inline-block
-        font-size: 20pt
-        margin-bottom: 10px
-      li
-        font-size: 14pt
-        margin-left: 20px
-        line-height: 1.8rem
-        a
-          color: #ffefd5
-          .active
-            text-decoration: underline !important
-        li
-          font-size: 12pt
-    .contacts
-      li
-        line-height: 2.3rem
-  .social
-    margin-bottom: 20px
-    display: flex
-    justify-content: center
-    i
-      font-size: 30pt
-      margin: 0 15px
-  .legal
-    display: flex
-    margin: 0 auto
-    width: 600px
-    justify-content: center
-    flex-wrap: wrap
-    align-items: center
-    span
-      line-height: 1rem
-      font-size: 8pt
-    .sep
-      height: .8rem
-      background-color: #ffefd5
-      width: 1.5px
-      border-radius: 3px
-      margin: 0 5px
-@media only screen and (max-width: 600px)
-  .footer
-    .wrap
-      flex-direction: column
-      .desc
-        width: 100%
-        p
-          font-size: 12pt
-      .sep
-        width: 100%
-        height: 3px
-        margin: 20px 0
-    .legal
-      width: 100%
-      display: flex
-      flex-direction: column
-      span
-        line-height: 20px
-      .sep
-        display: none

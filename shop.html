@@ -1,181 +1,163 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barett | Магазин</title>
+    <link href="https://fonts.cdnfonts.com/css/gogh" rel="stylesheet" />
+    <!-- link gogh font -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <!-- link google material icons -->
+    <script
+      src="https://kit.fontawesome.com/b0de6a042c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+    <!-- link fontawesome -->
+    <link rel="stylesheet" href="css/materialize.min.css" />
+    <!-- link materialize -->
+    <link rel="stylesheet" href="css/base.min.css" />
+    <link rel="stylesheet" href="css/shop.min.css" />
+    <!-- link style css -->
+    <link rel="stylesheet" href="fonts/logo/style.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="Описание страницы">
-    <meta name="keywords" content="Ключевые слова">
-    <title>Название страницы</title>
-
-    <link rel="icon" type="image/png" href="">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="css/materialize.min.css">
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
-
-<body>
-    <div class="container" style="display: none;">
-        <div class="row black-text">
-            <div class="col s1 center red">0</div>
-            <div class="col s1 center green">1</div>
-            <div class="col s1 center blue">2</div>
-            <div class="col s1 center red">3</div>
-            <div class="col s1 center green">4</div>
-            <div class="col s1 center blue">5</div>
-            <div class="col s1 center red">6</div>
-            <div class="col s1 center green">7</div>
-            <div class="col s1 center blue">8</div>
-            <div class="col s1 center red">9</div>
-            <div class="col s1 center green">10</div>
-            <div class="col s1 center blue">11</div>
+  <body>
+    <div class="menu-wrap full-hid">
+      <div class="menu">
+        <i class="fa-solid fa-xmark"></i>
+        <h2 class="sec-name">Меню</h2>
+        <div class="sep"></div>
+        <div class="navigation column">
+          <span>Навигация</span>
+          <ul>
+            <li><a href="index.html" class="">Главная</a></li>
+            <li>
+              <a href="shop.html" class="link-active">Магазин</a>
+              <ul>
+                <li><a href="electric.html">Электрогитары</a></li>
+                <li><a href="acoustic.html">Акустические гитары</a></li>
+                <li><a href="classical.html">Классическае гитары</a></li>
+                <li><a href="acessories.html">Аксессуары</a></li>
+              </ul>
+            </li>
+            <li><a href="cart.html">Корзина</a></li>
+          </ul>
         </div>
+        <div class="contacts column">
+          <span>Связаться с нами</span>
+          <ul>
+            <li><a href="">+7 370 730-93-40</a></li>
+            <li><a href="barett@gmail.com">barett@gmail.com</a></li>
+            <li><a href="adress.html">Адреса магазинов</a></li>
+            <li><a href="abuot.html">О нас</a></li>
+            <li><a href="news.html">Новости</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-
-    <main>
-        <nav class="z-depth-1 white">
-            <div class="container">
-                <div class="nav-wrapper flex-nav">
-                    <a href="#" class="logo"><img class="responsive-img" src="img/Logo.png" alt="logo"></a>
-
-                    <div class="desktop-menu hide-on-med-and-down">
-                        <a href="badges.html">Главная</a>
-                        <a href="collapsible.html">Магазин</a>
-                        <a href="mobile.html">О нас</a>
-                    </div>
-                    <div class="icon-menu">
-                        <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        <a href="#"><i class="fa-solid fa-user"></i></a>
-                        <a href="#"><i class="fa-solid fa-bag-shopping"></i></a>
-                        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i
-                                class="material-icons">menu</i></a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <ul class="sidenav" id="mobile-demo">
-            <span>Меню</span>
-            <div class="divider"></div>
-            <li><a href="#">Главная</a></li>
-            <li><a href="#">Магазин</a></li>
-            <li><a href="#">О нас</a></li>
-        </ul>
+    <header>
+      <div class="container">
+        <span class="cur-page">Магазин</span>
+        <div class="mini-menu">
+          <span class="icon-Logo logo"></span>
+          <i class="fa-solid fa-bars bars"></i>
         </div>
-
-
-
+      </div>
+    </header>
+    <div class="wrapper">
+      <main>
+        <section class="categories">
+          <div class="container">
+            <div class="cards">
+              <a class="card electric" href="electric.html">
+                <h4>Электрогитары</h4>
+                <p>Электрогитара представляет собой современную и надежную инструментальную модель с широкими музыкальными возможностями и привлекательным дизайном</p>
+                <div class="">Перейти <i class="fa-solid fa-arrow-right"></i></div>
+              </a>
+              <a class="card acoustic" href="acoustic.html">
+                <h4>Акустические гитары</h4>
+                <p>Акустическая гитара идеально подходит для любителей музыки, благодаря своему качественному звуку и красивому ансамблю материалов</p>
+                <div class="">Перейти <i class="fa-solid fa-arrow-right"></i></div>
+              </a>
+              <a class="card classical" href="classical.html">
+                <h4>Классические гитары</h4>
+                <p>Классическая гитара – это идеальный инструмент для музыкальной игры различных жанров, благодаря ее качественному звуку и надежному корпусу</p>
+                <div class="">Перейти <i class="fa-solid fa-arrow-right"></i></div>
+              </a>
+              <a class="card accesories" href="accesories.html">
+                <h4>Аксессуары</h4>
+                <p>В нашем интернет-магазине гитар вы можете найти все необходимые аксессуары для гитары, от передовых электронных устройств до импортных струн</p>
+                <div class="">Перейти <i class="fa-solid fa-arrow-right"></i></div>
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer>
         <div class="container">
-            <div class="row">
-                <div class="carousel carousel-slider center col s12 l6">
-                    <i class="fa-solid fa-chevron-left arrow arrow-left grey-text"></i>
-                    <i class="fa-solid fa-chevron-left arrow arrow-right grey-text"></i>
-
-                    <div class="carousel-item white-text" href="#one!">
-                        <div class="wrap">
-                            <img src="img/shop/Image.png" alt="">
-                        </div>
-                    </div>
-                    <div class="carousel-item white-text" href="#two!">
-                    </div>
-                    <div class="carousel-item white-text" href="#three!">
-                    </div>
-                    <div class="carousel-item white-text" href="#four!">
-                    </div>
-                </div>
-
-                <div class="quickDesc col s12 l6">
-                    <div class="type">
-                        Электрогитары
-                    </div>
-                    <h2 class="name">
-                        IBANEZ GRX70QA-TRB
-                    </h2>
-                    <div class="shortChars hide-on-med-and-down">
-                        Цвет: черный<br>
-                        Гриф: клен<br>
-                        Бридж: фиксированный, Звукосниматели: S/S/S
-                    </div>
-                    <div class="price">
-                        13 999 <span class="rubSign">₽</span>
-                    </div>
-                    <div class="row">
-                        <button class="toCart col s6">В корзину</button>
-                        <button class="buyNow col offset-s1 s5">Купить</button>
-                    </div>
-                </div>
+          <div class="wrap">
+            <div class="column desc">
+              <span class="icon-Logo"></span>
+              <p>
+                Магазин гитар Barett - это крупный музыкальный магазин,
+                специализирующийся на продаже гитар, гитарного оборудования и
+                аксессуаров. В магазине представлены все виды гитар: от
+                начинающих и любителей до профессиональных музыкантов.
+              </p>
             </div>
-
-            <div class="fullDesc">
-                <div class="chars">
-                    <div class="head">
-                        <h4 class="name">Характеристики:</h4>
-                        <i class="fa-solid fa-chevron-left arrow arrow-down grey-text"></i>
-                    </div>
-                    <div class="mainInf">
-                        Цвет: черный<br>
-                        Гриф: клен<br>
-                        Бридж: фиксированный, Звукосниматели: S/S/S...
-                    </div>
-                    <button class="showMore">
-                        Показать все
-                        <i class="fa-solid fa-chevron-left arrow arrow-down grey-text"></i>
-                    </button>
-                </div>
-                <div class="desc">
-                    <div class="head">
-                        <h4 class="name">Описание</h4>
-                        <i class="fa-solid fa-chevron-left arrow arrow-down black-text"></i>
-                    </div>
-                </div>
-                <div class="desc">
-                    <div class="head">
-                        <h4 class="name">Наличие</h4>
-                        <i class="fa-solid fa-chevron-left arrow arrow-down black-text"></i>
-                    </div>
-                </div>
-
+            <div class="sep"></div>
+            <div class="column navigation">
+              <span>Навигация</span>
+              <ul>
+                <li><a href="index.html" class="">Главная</a></li>
+                <li>
+                  <a href="shop.html" class="link-active">Магазин</a>
+                  <ul>
+                    <li><a href="electric.html">Электрогитары</a></li>
+                    <li><a href="acoustic.html">Акустические гитары</a></li>
+                    <li><a href="classical.html">Классическае гитары</a></li>
+                    <li><a href="acessories.html">Аксессуары</a></li>
+                  </ul>
+                </li>
+                <li><a href="cart.html">Корзина</a></li>
+              </ul>
             </div>
+            <div class="sep"></div>
+            <div class="column contacts">
+              <span>Связаться с нами</span>
+              <ul>
+                <li><a href="">+7 370 730-93-40</a></li>
+                <li><a href="barett@gmail.com">barett@gmail.com</a></li>
+                <li><a href="adress.html">Адреса магазинов</a></li>
+                <li><a href="abuot.html">О нас</a></li>
+                <li><a href="news.html">Новости</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="social">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+          <div class="legal">
+            <span>Политика конфиденциальности</span>
+            <div class="sep"></div>
+            <span>Пользовательское соглашение</span>
+            <div class="sep"></div>
+            <span>Отказ от ответственности</span>
+            <div class="sep"></div>
+            <span>Политика использования файлов cookie</span>
+          </div>
         </div>
-
-    </main>
-
-
-
-    <footer>
-        <div class="container">
-            <h2>Подписаться на рассылку</h2>
-            <div class="subscribe row">
-                <input placeholder="E-mail" id="e-mail" type="text" class="validate browser-default col l8 s12">
-                <button class="send-button col l3 s6 offset-l1 offset-s3">Отправить</button>
-            </div>
-            <h2>Контакты</h2>
-            <div class="contact row">
-                <a href="#" class="shops col l3 s12">Адреса магазинов</a>
-                <a href="#" class="phone col l3 s12">+7 370 730-93-40</a>
-                <button class="ask col l3 s6 offset-s3">Задать вопрос</button>
-                <div class="social col l3 s12">
-                    <a href="" class="facebook">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                    <a href="" class="twitter">
-                        <i class="fa-brands fa-twitter"></i>
-                    </a>
-                    <a href="" class="instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </footer>
-
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/js.js"></script>
-</body>
-
+      </footer>
+    </div>
+    <script src="js/shop.js"></script>
+    <script src="js/base.js"></script>
+  </body>
 </html>

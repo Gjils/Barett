@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".categories"),
     document.querySelector(".top-sellers"),
     document.querySelector(".reviews"),
-    document.querySelector(".footer"),
+    document.querySelector("footer"),
   ];
 
   let homeSlides = [
@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
       item.style.backgroundColor = "transparent";
     });
   });
-
 
   function buildSlide(curSlide, prevColor) {
     home.mainColor = `rgb(${homeSlides[curSlide].mainColor})`;
@@ -100,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     class CategoryCard {
       constructor(
         width,
-        { image, rgbColor, categoryName, faIcon, desc, href } = cardInf
+        { image, rgbColor, categoryName, faIcon, desc, href } = cardInf,
       ) {
         this.image = image;
         this.rgbColor = rgbColor;
@@ -183,7 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
           cards.innerHTML = "";
           res.forEach((elem) => {
             cards.appendChild(
-              new CategoryCard(window.innerWidth, elem).compilled
+              new CategoryCard(window.innerWidth, elem).compilled,
             );
           });
         }
@@ -201,7 +200,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  
   // Секция отзывов
   document.querySelector(".reviews").mainColor = "#ffffff";
   document.querySelector(".reviews").subColor = "#000000";
@@ -274,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function getReviewsList(curPage, items) {
           return items.slice(
             itemsPerPage * (curPage - 1),
-            itemsPerPage * curPage
+            itemsPerPage * curPage,
           );
         }
 
@@ -286,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
           indicators,
           arrowLeft,
           arrowRight,
-          pageQuant
+          pageQuant,
         ) {
           currentPage = curPage;
           const page = new ReviewsPage(
@@ -294,7 +292,7 @@ document.addEventListener("DOMContentLoaded", () => {
             prevPage,
             curPage,
             arrowLeft,
-            arrowRight
+            arrowRight,
           );
           page.renderPage(wrap);
           page.changeIndicators(indicators, arrowLeft, arrowRight, pageQuant);
@@ -309,7 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const wrap = document.querySelector(".reviews .wrap");
         wrap.innerHTML = "";
         const indicators = document.querySelector(
-          ".reviews .switch .indicators"
+          ".reviews .switch .indicators",
         );
         indicators.innerHTML = "";
         const arrowLeft = reviews.querySelector(".fa-chevron-left");
@@ -329,7 +327,7 @@ document.addEventListener("DOMContentLoaded", () => {
               indicators.querySelectorAll(".indicator"),
               arrowLeft,
               arrowRight,
-              pageQuant
+              pageQuant,
             );
           });
         });
@@ -342,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
             indicators.querySelectorAll(".indicator"),
             arrowLeft,
             arrowRight,
-            pageQuant
+            pageQuant,
           );
         };
         decPage = function () {
@@ -354,7 +352,7 @@ document.addEventListener("DOMContentLoaded", () => {
             indicators.querySelectorAll(".indicator"),
             arrowLeft,
             arrowRight,
-            pageQuant
+            pageQuant,
           );
         };
         arrowLeft.addEventListener("click", decPage);
@@ -367,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
           indicators.querySelectorAll(".indicator"),
           arrowLeft,
           arrowRight,
-          pageQuant
+          pageQuant,
         );
       }
       addToScreen();
@@ -384,8 +382,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   window.addEventListener("scroll", changeHeaderColor);
 
-  document.querySelector(".footer").mainColor = "#49423D";
-  document.querySelector(".footer").subColor = "#ffefd5";
+  document.querySelector("footer").mainColor = "#49423D";
+  document.querySelector("footer").subColor = "#ffefd5";
 
   function changeHeaderColor(e) {
     sections.forEach((elem) => {
