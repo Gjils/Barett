@@ -95,7 +95,7 @@ class ItemPage {
         indicator.style.width = `${imageWidth / 4.5}px`;
         indicator.style.marginRight = `${imageWidth / 4.5 / 6}px`;
       }
-      indicator.style.backgroundImage = `url("${image}")`;
+      indicator.style.backgroundImage = `url("${image.ind}")`;
       indicator.addEventListener("click", () => {
         curPage = i;
         imageCarousel.style.right = `${imageWidth * i}px`;
@@ -106,7 +106,7 @@ class ItemPage {
 
       const imageBlock = document.createElement("div");
       imageBlock.classList.add("image");
-      imageBlock.style.backgroundImage = `url("${image}")`;
+      imageBlock.style.backgroundImage = `url("${image.preview}")`;
       imageCarousel.append(imageBlock);
     });
 
@@ -235,7 +235,7 @@ class ItemCard {
           <div class="desc">
             <div class="type">${this.typeName}</div>
             <h4 >${
-              this.name.length > 25 ? this.name.slice(0, 25) + "..." : this.name
+              this.name.length > 20 ? this.name.slice(0, 20) + "..." : this.name
             }</h4>
             <div class="bot">
               <div class="avaib">В наличии</div>
@@ -243,9 +243,15 @@ class ItemCard {
             </div>
           </div>`;
 
-    card.querySelector(
-      ".picture"
-    ).style.backgroundImage = `url("${this.images[0]}")`;
+    if (window.innerWidth < 600) {
+      card.querySelector(
+        ".picture"
+      ).style.backgroundImage = `url("${this.images[0].mobCard}")`;
+    } else {
+      card.querySelector(
+        ".picture"
+      ).style.backgroundImage = `url("${this.images[0].pcCard}")`;
+    }
     const heart = card.querySelector(".fa-heart");
     heart.addEventListener("mouseover", (event) => {
       event.target.classList.add("fa-solid");
@@ -307,7 +313,7 @@ class ItemCard {
     this.colorize(card);
     card.querySelector(
       ".picture"
-    ).style.backgroundImage = `url("${this.images[0]}")`;
+    ).style.backgroundImage = `url("${this.images[0].preview}")`;
     card.addEventListener("click", () => {
       const itemPage = new ItemPage(
         this.color,
@@ -337,36 +343,5 @@ class ItemCard {
     return card;
   }
 }
-fetch("data/items.json")
-  .then((res) => {
-    return res.json();
-  })
-  .then((res) => {
-    function addToScreen() {
-      const wrap = document.querySelector(".top-sellers .wrap");
-      wrap.innerHTML = "";
-      const items = []
-        .concat(
-          res.acoustic.slice(0, 3),
-          res.electric.slice(0, 3),
-          res.ench.slice(7, 9)
-        )
-        .sort(() => Math.random() - 0.5);
-      items.forEach((item) => {
-        wrap.appendChild(new ItemCard(window.innerWidth, item).compilled);
-      });
-    }
-    addToScreen();
-    window.addEventListener("resize", () => {
-      if (window.condition == "mobile" && window.innerWidth >= 600) {
-        addToScreen();
-        window.condition = "desktop";
-      }
-      if (window.condition == "desktop" && window.innerWidth < 600) {
-        addToScreen();
-        window.condition = "mobile";
-      }
-    });
-  });
 
 export { ItemCard };
