@@ -8,10 +8,10 @@ import urllib.request as urllib
 import codecs
 
 
-with open ("data/items.json") as f:
+with open ("data/old_items.json") as f:
   items = json.load(f)
 
-with open ("data/items.json") as f:
+with open ("data/old_items.json") as f:
   new_items = json.load(f)
 
 for category in items:
@@ -49,10 +49,10 @@ for category in items:
       pcCard_path = f"img/items/{category}/{item['id']}/{i}/pcCard.jpg"
       mobCard_path = f"img/items/{category}/{item['id']}/{i}/mobCard.jpg"
       
-      image.resize((80, 80)).save(ind_path)
-      image.resize((400, 400)).save(prev_path)
-      image.resize((300, 300)).save(pcCard_path)
-      image.resize((150, 150)).save(mobCard_path)
+      image.resize((160, 160)).save(ind_path)
+      image.resize((800, 800)).save(prev_path)
+      image.resize((500, 500)).save(pcCard_path)
+      image.resize((300, 300)).save(mobCard_path)
       new_items[category][item['id']]["images"][i] = {
         "ind": "/" + ind_path,
         "preview": "/" + prev_path,
