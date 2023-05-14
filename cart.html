@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Barett | Аксессуары</title>
+		<title>Barett | Корзина</title>
 		<link href="https://fonts.cdnfonts.com/css/gogh" rel="stylesheet" />
 		<!-- link gogh font -->
 		<link
@@ -20,10 +20,9 @@
 		<!-- link fontawesome -->
 		<link rel="stylesheet" href="css/materialize.min.css" />
 		<!-- link materialize -->
-		<link rel="stylesheet" href="css/base.min.css" />
-		<link rel="stylesheet" href="css/category.min.css" />
-		<link rel="stylesheet" href="css/items.min.css" />
 		<link rel="stylesheet" href="css/item-page.min.css" />
+		<link rel="stylesheet" href="css/base.min.css" />
+		<link rel="stylesheet" href="css/cart.min.css" />
 		<!-- link style css -->
 		<link rel="stylesheet" href="fonts/logo/style.css" />
 	</head>
@@ -44,12 +43,10 @@
 								<li><a href="electric.html">Электрогитары</a></li>
 								<li><a href="acoustic.html">Акустические гитары</a></li>
 								<li><a href="classical.html">Классические гитары</a></li>
-								<li>
-									<a href="acessories.html" class="link-active">Аксессуары</a>
-								</li>
+								<li><a href="acessories.html">Аксессуары</a></li>
 							</ul>
 						</li>
-						<li><a href="cart.html">Корзина</a></li>
+						<li><a href="cart.html" class="link-active">Корзина</a></li>
 					</ul>
 				</div>
 				<div class="contacts column">
@@ -57,16 +54,18 @@
 					<ul>
 						<li><a href="">+7 370 730-93-40</a></li>
 						<li><a href="barett@gmail.com">barett@gmail.com</a></li>
-						<li><a href="adress.html">Адреса магазинов</a></li>
+						<li>
+							<a href="adress.html">Адреса магазинов</a>
+						</li>
 						<li><a href="about.html">О нас</a></li>
 						<li><a href="news.html">Новости</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<header class="acessories">
+		<header>
 			<div class="container">
-				<span class="cur-page">Аксессуары</span>
+				<span class="cur-page">Корзина</span>
 				<div class="mini-menu">
 					<span class="icon-Logo logo"></span>
 					<i class="fa-solid fa-bars bars"></i>
@@ -75,11 +74,12 @@
 		</header>
 		<div class="wrapper">
 			<main>
-				<div class="items acessories" id="ench">
+				<section class="items">
 					<div class="container">
 						<div class="wrap"></div>
+						<div class="order-info"></div>
 					</div>
-				</div>
+				</section>
 			</main>
 			<footer>
 				<div class="container">
@@ -97,21 +97,17 @@
 						<div class="column navigation">
 							<span>Навигация</span>
 							<ul>
-								<li><a href="index.html">Главная</a></li>
+								<li><a href="index.html" class="">Главная</a></li>
 								<li>
 									<a href="shop.html">Магазин</a>
 									<ul>
 										<li><a href="electric.html">Электрогитары</a></li>
 										<li><a href="acoustic.html">Акустические гитары</a></li>
 										<li><a href="classical.html">Классические гитары</a></li>
-										<li>
-											<a href="acessories.html" class="link-active"
-												>Аксессуары</a
-											>
-										</li>
+										<li><a href="acessories.html">Аксессуары</a></li>
 									</ul>
 								</li>
-								<li><a href="cart.html">Корзина</a></li>
+								<li><a href="cart.html" class="link-active">Корзина</a></li>
 							</ul>
 						</div>
 						<div class="sep"></div>
@@ -120,7 +116,9 @@
 							<ul>
 								<li><a href="">+7 370 730-93-40</a></li>
 								<li><a href="barett@gmail.com">barett@gmail.com</a></li>
-								<li><a href="adress.html">Адреса магазинов</a></li>
+								<li>
+									<a href="adress.html">Адреса магазинов</a>
+								</li>
 								<li><a href="about.html">О нас</a></li>
 								<li><a href="news.html">Новости</a></li>
 							</ul>
@@ -144,8 +142,7 @@
 				</div>
 			</footer>
 		</div>
-		<script src="js/shop.js"></script>
+		<script src="js/cart.js" type="module"></script>
 		<script src="js/base.js"></script>
-		<script src="js/category.js" type="module"></script>
 	</body>
 </html>

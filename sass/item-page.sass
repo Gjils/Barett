@@ -1,0 +1,212 @@
+﻿.item-page-wrap
+	z-index: 1000000
+	position: fixed
+	background-color: rgba(0, 0, 0, .5)
+	top: 0
+	left: 0
+	width: 100vw
+	height: 100vh
+	display: flex
+	justify-content: center
+	align-items: center
+	.item-page
+		z-index: 10000000
+		position: relative
+		padding: 25px 5px 25px 5px
+		width: 70%
+		min-width: 1280px
+		height: 85%
+		border-radius: 30px
+		background-color: white
+		&-container
+			padding: 0px 80px 30px 80px
+			height: 100%
+			overflow: scroll
+			justify-content: center
+			.fa-xmark
+				cursor: pointer
+				position: absolute
+				top: 10px
+				right: 20px
+				font-size: 40px
+				color: grey
+			.top-container
+				display: flex
+				justify-content: space-between
+				margin-bottom: 50px
+				.images
+					display: flex
+					.image-wrap
+						.image-carousel
+							overflow: hidden
+							position: relative
+							box-sizing: content-box
+							border: 5px solid black
+							height: 400px
+							margin: 0 auto
+							aspect-ratio: 1
+							border-radius: 20px
+							margin-bottom: 20px
+							.image-carousel-wrap
+								transition-duration: .2s
+								display: flex
+								height: 100%
+								position: relative
+								right: 0px
+								.image
+									height: 100%
+									aspect-ratio: 1
+									background-color: white
+									background-size: auto 100%
+									background-position: center
+									background-repeat: no-repeat
+						.switch
+							margin-left: auto
+							width: 400px
+							display: flex
+							justify-content: space-between
+							i
+								cursor: pointer
+								margin: 0 10px
+								font-size: 50px
+								color: grey
+					.indicators-wrap
+						height: 480px
+						overflow: hidden
+						margin-right: 30px
+						.indicators
+							position: relative
+							top: 0px
+							left: 0px
+							transition-duration: .2s
+							.indicator
+								cursor: pointer
+								border: 2px solid grey
+								background-color: white
+								background-size: auto 100%
+								background-position: center
+								background-repeat: no-repeat
+								width: 80px
+								height: 80px
+								margin-bottom: 20px
+								border-radius: 10px
+							.active
+								border-width: 4px
+				.info
+					width: 45%
+					.type
+						font-size: 15pt
+					.name-wrap
+						height: 230px
+						.name
+							font-size: 30pt
+							margin-top: 0px
+							margin-bottom: 0px
+						.guarantee
+							font-size: 13pt
+					.price
+						text-align: right
+						font-size: 35pt
+						margin-bottom: 10px
+					.buttons
+						text-align: right
+						.buy-now
+							border: none
+							color: white
+						button
+							font-size: 15pt
+							font-family: 'Gogh', sans-serif
+							background-color: transparent
+							border-radius: 20px
+							border: 3px solid
+							height: 70px
+							aspect-ratio: 20/7
+							margin-left: 20px
+							margin-bottom: 20px
+							i
+								font-size: 15pt
+					.delivery-options
+						text-align: right
+						font-size: 13pt
+						i
+							font-size: 11pt
+						a
+							border-bottom: 1px dashed
+
+			.desc
+				> div
+					padding: 15px
+					border-radius: 10px
+					border: 2px solid black
+					h3
+						font-size: 14pt
+
+@media only screen and (max-width: 600px)
+	.item-page-wrap
+		.item-page
+			width: 95%
+			height: 95%
+			min-width: 0px
+			padding-top: 40px
+			.fa-xmark
+				font-size: 30px
+			&-container
+				padding: 5px
+				.top-container
+					flex-direction: column
+					.images
+						flex-direction: column-reverse
+						.image-wrap
+							margin-bottom: 20px
+							.image-carousel
+								width: 90%
+								aspect-ratio: 1
+								height: auto
+							.switch
+								width: 90%
+								margin: 0 auto
+								i
+									font-size: 40px
+						.indicators-wrap
+							margin: 0 auto
+							height: auto
+							width: 90%
+							overflow: hidden
+							.indicators
+								width: 2000px
+								display: flex
+								.indicator
+									aspect-ratio: 1
+									height: auto
+					.info
+						margin: 0 auto
+						width: 90%
+						.type
+							font-size: 11pt
+						.name-wrap
+							height: 150px
+							.name
+								font-size: 20pt
+							.guarantee
+								font-size: 11pt
+						.price
+							font-size: 25pt
+						.buttons
+							display: flex
+							justify-content: space-between
+							button
+								font-size: 10pt
+								border-radius: 20px
+								height: 50px
+								width: 47%
+								margin-left: 0
+								i
+									font-size: 15px
+						.delivery-options
+							font-size: 11pt
+
+				.desc
+					width: 90%
+					margin: 0 auto
+					h3
+						font-size: 13pt

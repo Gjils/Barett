@@ -1,0 +1,89 @@
+﻿header
+  background-color: #fdf5e6
+  color: #383838
+main
+  background-color: #fdf5e6
+  color: #383838
+
+.items
+  .container
+    display: flex
+    justify-content: space-between
+    .order-info
+      margin-top: .5rem
+      border-radius: 30px
+      width: 33%
+      height: 600px
+      background-color: #383838
+    .wrap
+      width: 65%
+      .card
+        cursor: pointer
+        box-shadow: none
+        padding: 40px
+        border-radius: 30px
+        display: block
+        height: 300px
+        display: flex
+        flex-direction: row-reverse
+        .hover-bg
+          display: none
+        i
+          position: absolute
+          font-size: 20px
+        .desc
+          position: relative
+          height: 100%
+          width: calc(100% - 220px)
+          h4
+            margin-top: 10px
+        .picture
+          height: 220px
+          width: 220px
+          background-size: 100%
+        .bot
+          padding-right: 50px
+          position: absolute
+          width: 100%
+          bottom: 0
+          margin-right: 30px
+          display: flex
+          justify-content: space-between
+          .quant
+            display: flex
+            align-items: center
+            .delete
+              cursor: pointer
+              font-family: 'Gogh', sans-serif
+              color: #E32636
+              background-color: white
+              border: 2px solid #E32636
+              border-radius: 20px
+              display: block
+              padding: 10px 20px
+          .buy-info
+            display: flex
+            justify-content: space-between
+            align-items: center
+            .price
+              position: relative
+              z-index: 5
+              font-size: 30pt
+              color: black
+              span
+                color: gray
+            .avaib
+              margin-right: 20px
+              position: relative
+              z-index: 5
+              font-size: 15pt
+              color: black
+              &::before
+                content: ""
+                display: inline-block
+                margin-right: 5px
+                margin-bottom: 2px
+                width: 10px
+                height: 10px
+                border-radius: 100%
+                background-color: rgb(1,84,0)

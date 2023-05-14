@@ -1,182 +1,213 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Barett | Адреса магазинов</title>
-    <link href="https://fonts.cdnfonts.com/css/gogh" rel="stylesheet" />
-    <!-- link gogh font -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <!-- link google material icons -->
-    <script
-      src="https://kit.fontawesome.com/b0de6a042c.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
-    <!-- link fontawesome -->
-    <link rel="stylesheet" href="css/materialize.min.css" />
-    <!-- link materialize -->
-    <link rel="stylesheet" href="css/base.min.css" />
-    <link rel="stylesheet" href="css/adress.min.css" />
-    <!-- link style css -->
-    <link rel="stylesheet" href="fonts/logo/style.css" />
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Barett | Адреса магазинов</title>
+		<link href="https://fonts.cdnfonts.com/css/gogh" rel="stylesheet" />
+		<!-- link gogh font -->
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+		/>
+		<!-- link google material icons -->
+		<script
+			src="https://kit.fontawesome.com/b0de6a042c.js"
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" href="fontawesome/css/all.min.css" />
+		<!-- link fontawesome -->
+		<link rel="stylesheet" href="css/materialize.min.css" />
+		<!-- link materialize -->
+		<link rel="stylesheet" href="css/base.min.css" />
+		<link rel="stylesheet" href="css/adress.min.css" />
+		<!-- link style css -->
+		<link rel="stylesheet" href="fonts/logo/style.css" />
+	</head>
 
-  <body>
-    <div class="menu-wrap full-hid">
-      <div class="menu">
-        <i class="fa-solid fa-xmark"></i>
-        <h2 class="sec-name">Меню</h2>
-        <div class="sep"></div>
-        <div class="navigation column">
-          <span>Навигация</span>
-          <ul>
-            <li><a href="index.html" class="">Главная</a></li>
-            <li>
-              <a href="shop.html">Магазин</a>
-              <ul>
-                <li><a href="electric.html">Электрогитары</a></li>
-                <li><a href="acoustic.html">Акустические гитары</a></li>
-                <li><a href="classical.html">Классические гитары</a></li>
-                <li><a href="acessories.html">Аксессуары</a></li>
-              </ul>
-            </li>
-            <li><a href="cart.html">Корзина</a></li>
-          </ul>
-        </div>
-        <div class="contacts column">
-          <span>Связаться с нами</span>
-          <ul>
-            <li><a href="">+7 370 730-93-40</a></li>
-            <li><a href="barett@gmail.com">barett@gmail.com</a></li>
-            <li>
-              <a href="adress.html" class="link-active">Адреса магазинов</a>
-            </li>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="news.html">Новости</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <header>
-      <div class="container">
-        <span class="cur-page">Адреса магазинов</span>
-        <div class="mini-menu">
-          <span class="icon-Logo logo"></span>
-          <i class="fa-solid fa-bars bars"></i>
-        </div>
-      </div>
-    </header>
-    <div class="wrapper">
-      <main>
-        <section class="map-wrap">
-          <div class="container">
-            <h2 class="sec-name">Мы на карте</h2>
-            <div class="line"></div>
-            <div class="map" style="position: relative; overflow: hidden">
-              <a
-                href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps"
-                style="
-                  color: #eee;
-                  font-size: 12px;
-                  position: absolute;
-                  top: 0px;
-                "
-                >Москва</a
-              ><a
-                href="https://yandex.ru/maps/213/moscow/?ll=37.666516%2C55.738445&utm_medium=mapframe&utm_source=maps&z=10.6"
-                style="
-                  color: #eee;
-                  font-size: 12px;
-                  position: absolute;
-                  top: 14px;
-                "
-                >Яндекс Карты — транспорт, навигация, поиск мест</a
-              ><iframe
-                src="https://yandex.ru/map-widget/v1/?ll=37.666516%2C55.738445&z=10.6"
-                width="100%"
-                height="500"
-                frameborder="1"
-                allowfullscreen="true"
-                style="position: relative"
-              ></iframe>
-            </div>
-          </div>
-        </section>
-        <section class="adresses">
-          <div class="container">
-            <h2 class="sec-name">Адреса</h2>
-            <div class="line"></div>
-            <div class="items"></div>
-          </div>
-        </section>
-      </main>
-      <footer>
-        <div class="container">
-          <div class="wrap">
-            <div class="column desc">
-              <span class="icon-Logo"></span>
-              <p>
-                Магазин гитар Barett - это крупный музыкальный магазин,
-                специализирующийся на продаже гитар, гитарного оборудования и
-                аксессуаров. В магазине представлены все виды гитар: от
-                начинающих и любителей до профессиональных музыкантов.
-              </p>
-            </div>
-            <div class="sep"></div>
-            <div class="column navigation">
-              <span>Навигация</span>
-              <ul>
-                <li><a href="index.html" class="">Главная</a></li>
-                <li>
-                  <a href="shop.html" class="link-active">Магазин</a>
-                  <ul>
-                    <li><a href="electric.html">Электрогитары</a></li>
-                    <li><a href="acoustic.html">Акустические гитары</a></li>
-                    <li><a href="classical.html">Классические гитары</a></li>
-                    <li><a href="acessories.html">Аксессуары</a></li>
-                  </ul>
-                </li>
-                <li><a href="cart.html">Корзина</a></li>
-              </ul>
-            </div>
-            <div class="sep"></div>
-            <div class="column contacts">
-              <span>Связаться с нами</span>
-              <ul>
-                <li><a href="">+7 370 730-93-40</a></li>
-                <li><a href="barett@gmail.com">barett@gmail.com</a></li>
-                <li>
-                  <a href="adress.html" class="link-active">Адреса магазинов</a>
-                </li>
-                <li><a href="about.html">О нас</a></li>
-                <li><a href="news.html">Новости</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="social">
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-youtube"></i>
-          </div>
-          <div class="legal">
-            <span>Политика конфиденциальности</span>
-            <div class="sep"></div>
-            <span>Пользовательское соглашение</span>
-            <div class="sep"></div>
-            <span>Отказ от ответственности</span>
-            <div class="sep"></div>
-            <span>Политика использования файлов cookie</span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    <script src="js/shop.js"></script>
-    <script src="js/base.js"></script>
-  </body>
+	<body>
+		<div class="menu-wrap full-hid">
+			<div class="menu">
+				<i class="fa-solid fa-xmark"></i>
+				<h2 class="sec-name">Меню</h2>
+				<div class="sep"></div>
+				<div class="navigation column">
+					<span>Навигация</span>
+					<ul>
+						<li><a href="index.html" class="">Главная</a></li>
+						<li>
+							<a href="shop.html">Магазин</a>
+							<ul>
+								<li><a href="electric.html">Электрогитары</a></li>
+								<li><a href="acoustic.html">Акустические гитары</a></li>
+								<li><a href="classical.html">Классические гитары</a></li>
+								<li><a href="acessories.html">Аксессуары</a></li>
+							</ul>
+						</li>
+						<li><a href="cart.html">Корзина</a></li>
+					</ul>
+				</div>
+				<div class="contacts column">
+					<span>Связаться с нами</span>
+					<ul>
+						<li><a href="">+7 370 730-93-40</a></li>
+						<li><a href="barett@gmail.com">barett@gmail.com</a></li>
+						<li>
+							<a href="adress.html" class="link-active">Адреса магазинов</a>
+						</li>
+						<li><a href="about.html">О нас</a></li>
+						<li><a href="news.html">Новости</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<header>
+			<div class="container">
+				<span class="cur-page">Адреса магазинов</span>
+				<div class="mini-menu">
+					<span class="icon-Logo logo"></span>
+					<i class="fa-solid fa-bars bars"></i>
+				</div>
+			</div>
+		</header>
+		<div class="wrapper">
+			<main>
+				<section class="map-wrap">
+					<div class="container">
+						<h2 class="sec-name">Мы на карте</h2>
+						<div class="line"></div>
+						<div class="map" style="position: relative; overflow: hidden">
+							<a
+								href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps"
+								style="
+									color: #eee;
+									font-size: 12px;
+									position: absolute;
+									top: 0px;
+								"
+								>Москва</a
+							><a
+								href="https://yandex.ru/maps/213/moscow/?ll=37.666516%2C55.738445&utm_medium=mapframe&utm_source=maps&z=10.6"
+								style="
+									color: #eee;
+									font-size: 12px;
+									position: absolute;
+									top: 14px;
+								"
+								>Яндекс Карты — транспорт, навигация, поиск мест</a
+							><iframe
+								src="https://yandex.ru/map-widget/v1/?ll=37.666516%2C55.738445&z=10.6"
+								width="100%"
+								height="500"
+								frameborder="1"
+								allowfullscreen="true"
+								style="position: relative"
+							></iframe>
+						</div>
+					</div>
+				</section>
+				<section class="adresses">
+					<div class="container">
+						<h2 class="sec-name">Адреса</h2>
+						<div class="line"></div>
+						<div class="items">
+							<a>ул. Красная Пресня, д. 12</a>
+							<div class="sep"></div>
+							<a>ул. Солянка, д. 7</a>
+							<div class="sep"></div>
+							<a>пр-т Мира, д. 123</a>
+							<div class="sep"></div>
+							<a>ул. Большая Тульская, д. 27</a>
+							<div class="sep"></div>
+							<a>ул. Новый Арбат, д. 22</a>
+							<div class="sep"></div>
+							<a>пр-т Вернадского, д. 88</a>
+							<div class="sep"></div>
+							<a>ул. Кузнецкий Мост, д. 3/5</a>
+							<div class="sep"></div>
+							<a>ул. Маросейка, д. 4/2</a>
+							<div class="sep"></div>
+							<a>ул. Лубянка, д. 3/1</a>
+							<div class="sep"></div>
+							<a>ул. Сущёвский Вал, д. 10</a>
+							<div class="sep"></div>
+							<a>пр-т Ленинский, д. 14</a>
+							<div class="sep"></div>
+							<a>ул. Большая Пироговская, д. 22</a>
+							<div class="sep"></div>
+							<a>ул. Новый Арбат, д. 36</a>
+							<div class="sep"></div>
+							<a>ул. Пятницкая, д. 25/1</a>
+							<div class="sep"></div>
+							<a>пр-т Мира, д. 105 корп. 1</a>
+							<div class="sep"></div>
+						</div>
+					</div>
+				</section>
+			</main>
+			<footer>
+				<div class="container">
+					<div class="wrap">
+						<div class="column desc">
+							<span class="icon-Logo"></span>
+							<p>
+								Магазин гитар Barett - это крупный музыкальный магазин,
+								специализирующийся на продаже гитар, гитарного оборудования и
+								аксессуаров. В магазине представлены все виды гитар: от
+								начинающих и любителей до профессиональных музыкантов.
+							</p>
+						</div>
+						<div class="sep"></div>
+						<div class="column navigation">
+							<span>Навигация</span>
+							<ul>
+								<li><a href="index.html" class="">Главная</a></li>
+								<li>
+									<a href="shop.html">Магазин</a>
+									<ul>
+										<li><a href="electric.html">Электрогитары</a></li>
+										<li><a href="acoustic.html">Акустические гитары</a></li>
+										<li><a href="classical.html">Классические гитары</a></li>
+										<li><a href="acessories.html">Аксессуары</a></li>
+									</ul>
+								</li>
+								<li><a href="cart.html">Корзина</a></li>
+							</ul>
+						</div>
+						<div class="sep"></div>
+						<div class="column contacts">
+							<span>Связаться с нами</span>
+							<ul>
+								<li><a href="">+7 370 730-93-40</a></li>
+								<li><a href="barett@gmail.com">barett@gmail.com</a></li>
+								<li>
+									<a href="adress.html" class="link-active">Адреса магазинов</a>
+								</li>
+								<li><a href="about.html">О нас</a></li>
+								<li><a href="news.html">Новости</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="social">
+						<i class="fa-brands fa-facebook"></i>
+						<i class="fa-brands fa-instagram"></i>
+						<i class="fa-brands fa-twitter"></i>
+						<i class="fa-brands fa-youtube"></i>
+					</div>
+					<div class="legal">
+						<span>Политика конфиденциальности</span>
+						<div class="sep"></div>
+						<span>Пользовательское соглашение</span>
+						<div class="sep"></div>
+						<span>Отказ от ответственности</span>
+						<div class="sep"></div>
+						<span>Политика использования файлов cookie</span>
+					</div>
+				</div>
+			</footer>
+		</div>
+		<script src="js/shop.js"></script>
+		<script src="js/base.js"></script>
+	</body>
 </html>
