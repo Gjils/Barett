@@ -10,11 +10,57 @@ main
     display: flex
     justify-content: space-between
     .order-info
+      padding: 10px 20px
       margin-top: .5rem
       border-radius: 30px
+      height: 520px
       width: 33%
-      height: 600px
       background-color: #383838
+      color: #fdf5e6
+      h4
+        font-size: 20pt
+        text-align: center
+      .sep
+        height: 3px
+        width: 100%
+        background-color: #fdf5e6
+        margin-bottom: 50px
+      .small-text
+      .c-row
+        margin-bottom: 30px
+        display: flex
+        justify-content: space-between
+        align-items: center
+        *
+          font-size: 15pt
+        .price
+          font-size: 20pt
+      .buy
+        margin-bottom: 30px
+        cursor: pointer
+        border-style: none
+        border: 2px solid #fdf5e6
+        border-radius: 20px
+        background-color: transparent
+        font-family: 'Gogh', sans-serif
+        width: 100%
+        height: 70px
+        color: #fdf5e6
+        &:hover
+          background-color: #fdf5e6
+          color: #383838
+          transition: .2s
+      .del
+        margin-bottom: 20px
+        border-radius: 20px
+        padding: 20px
+        text-align: center
+        background-color: #fdf5e6
+        color: #383838
+        font-size: 15pt
+        span
+          border-bottom: 1px dashed
+
     .wrap
       width: 65%
       .card
@@ -87,3 +133,71 @@ main
                 height: 10px
                 border-radius: 100%
                 background-color: rgb(1,84,0)
+
+@media only screen and (max-width: 600px)
+  .items
+    margin-bottom: 20px 
+    .container
+      flex-direction: column
+      .wrap
+        width: 100%
+        .card
+          border-radius: 20px
+          height: 180px
+          padding: 15px
+          flex-direction: column
+          i
+            right: 20px
+            top: 15px
+            font-size: 15px
+          .picture
+            position: absolute
+            width: 100px
+            height: 100px
+          .desc
+            width: 100%
+            .type
+              margin-left: 110px
+              font-size: 7pt
+              margin-bottom: 5px
+            h4
+              margin-top: 0px
+              font-size: 13pt
+              margin-left: 110px
+            .bot
+              padding: 0
+              position: absolute
+              top: 110px !important
+              .quant
+                .delete
+                  padding: 5px
+                  font-size: 6pt
+                  height: 30px
+                  width: 80px
+              .buy-info
+                .avaib
+                  font-size: 7pt
+                  margin-right: 10px
+                  &::before
+                    width: 7px
+                    height: 7px
+                    position: relative
+                    top: 2px
+                .price
+                  font-size: 15pt
+
+      .order-info
+        height: auto
+        width: 100%
+        h4
+          font-size: 15pt
+        .small-text
+          font-size: 8pt
+        .c-row
+          *
+            font-size: 11pt
+          .price
+            font-size: 15pt
+        .del
+          padding: 15px
+          font-size: 11pt
