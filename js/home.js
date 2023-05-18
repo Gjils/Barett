@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	let homeSlides = [
 		{
-			mainColor: "115, 66, 34",
+			mainColor: "105,54,35",
 			subColor: "#4DBF85",
 			slideText: "Подберите инструмент для любимого хобби",
 			image: "img/home/top-slider/hobby.jpg",
