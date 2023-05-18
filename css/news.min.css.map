@@ -1,1 +1,1 @@
-{"version":3,"sources":["../sass/news.sass"],"names":[],"mappings":"AAAC,OACC,wBAAA,CACA,aAAA,CACF,KACE,wBAAA,CACA,aAAA,CAEE,2BACE,mBAAA,CAAA,mBAAA,CAAA,YAAA,CACA,iCACE,SAAA,CACF,oCACE,SAAA","file":"news.min.css"}
+{"version":3,"sources":["../sass/news.sass"],"names":[],"mappings":"AAAC,OACC,wBAAA,CACA,aAAA,CACF,KACE,wBAAA,CACA,aAAA,CAEE,2BACE,mBAAA,CAAA,mBAAA,CAAA,YAAA,CACA,iCACE,SAAA,CACA,mCACE,SAAA,CACA,cAAA,CACJ,oCACE,SAAA,CAEF,8BACE,YAAA,CACA,wEAAA,CACA,yBAAA","file":"news.min.css"}
