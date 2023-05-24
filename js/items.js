@@ -253,6 +253,9 @@ class ItemCard {
 		card.querySelector(
 			".picture",
 		).style.backgroundImage = `url("${this.images[0].preview}")`;
+		const rubSign = card.querySelector("span");
+		rubSign.style.color = this.color;
+
 		card.addEventListener("click", () => {
 			const itemPage = new ItemPage(
 				this.color,

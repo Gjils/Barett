@@ -107,6 +107,10 @@ main
               border-radius: 20px
               display: block
               padding: 10px 20px
+              &:hover
+                background-color: #E32636
+                color: white  
+                transition: .2s
           .buy-info
             display: flex
             justify-content: space-between
@@ -136,7 +140,7 @@ main
 
 @media only screen and (max-width: 600px)
   .items
-    margin-bottom: 20px 
+    margin-bottom: 20px
     .container
       flex-direction: column
       .wrap
@@ -174,6 +178,7 @@ main
                   font-size: 6pt
                   height: 30px
                   width: 80px
+
               .buy-info
                 .avaib
                   font-size: 7pt

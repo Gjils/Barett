@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		let prevColor = homeSlides[curSlide].mainColor;
 		curSlide = (curSlide + 1) % 3;
 		buildSlide(curSlide, prevColor);
-	}, 40000);
+	}, 6000);
 
 	// Секция категорий
 	document.querySelector(".categories").mainColor = "#f5f5f5";
