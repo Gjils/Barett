@@ -12,4 +12,3 @@ Barett is my first big project that I made at spring 2023 as the graduate work o
 ---
 ![alt text](https://github.com/Gjils/Barett/blob/main/preview/main-mobile.png)</br>
 > Main page on mobile
----
